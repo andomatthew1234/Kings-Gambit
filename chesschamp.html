@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King's Gambit</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+<style>
+body { font-family: Inter, sans-serif; }
+.board {
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    aspect-ratio:1;
+}
+.square { display:flex; justify-content:center; align-items:center; font-size:2rem; }
+.light { background:#f0d9b5; }
+.dark { background:#b58863; }
+.selected { background:#6b9ac4!important; }
+.valid-move::after {
+    content:'';
+    width:30%;
+    height:30%;
+    background:rgba(0,0,0,.3);
+    border-radius:50%;
+    position:absolute;
+}
+</style>
+</head>
+
+<body class="bg-gray-900 text-white flex flex-col items-center p-4">
+
+<!-- TIMER -->
+<div id="timer" class="absolute top-4 left-4 bg-gray-800 px-3 py-2 rounded"></div>
+
+<!-- HOME -->
+<div id="home">
+<h1 class="text-5xl mb-6">King's Gambit</h1>
+<button onclick="startGame()" class="bg-blue-600 px-4 py-3 rounded w-full mb-3">New Game</button>
+<button onclick="showStats()" class="bg-green-600 px-4 py-3 rounded w-full">Stats</button>
+</div>
+
+<!-- STATS -->
+<div id="stats" class="hidden text-center"></div>
+
+<!-- GAME -->
+<div id="game" class="hidden">
+<div id="status" class="mb-2 text-xl"></div>
+<div id="board" class="board"></div>
+</div>
+
+<script>
+const game = new Chess();
+let selected = null;
+let validMoves = [];
+let isGameOver = false;
+
+// ======================
+// TIMER
+// ======================
+let gameStart, moveStart;
+
+function startTimers(){
+    gameStart = performance.now();
+    moveStart = performance.now();
+    requestAnimationFrame(updateTimer);
+}
+
+function updateTimer(){
+    if(isGameOver) return;
+
+    let g = ((performance.now()-gameStart)/1000).toFixed(1);
+    let m = ((performance.now()-moveStart)/1000).toFixed(1);
+
+    timer.textContent = `Game: ${g}s | Move: ${m}s`;
+    requestAnimationFrame(updateTimer);
+}
+
+// ======================
+// STATS (LOCAL)
+// ======================
+function getStats(){
+    return JSON.parse(localStorage.getItem("stats")) || {
+        games:0,wins:0,losses:0,draws:0,best:0
+    };
+}
+function saveStats(s){ localStorage.setItem("stats",JSON.stringify(s)); }
+
+function showStats(){
+    home.classList.add("hidden");
+    stats.classList.remove("hidden");
+
+    let s = getStats();
+
+    stats.innerHTML = `
+    <h1 class="text-4xl mb-4">Dashboard</h1>
+    <div class="grid grid-cols-2 gap-3">
+        <div class="bg-gray-800 p-3 rounded">Games: ${s.games}</div>
+        <div class="bg-gray-800 p-3 rounded">Wins: ${s.wins}</div>
+        <div class="bg-gray-800 p-3 rounded">Losses: ${s.losses}</div>
+        <div class="bg-gray-800 p-3 rounded">Draws: ${s.draws}</div>
+        <div class="bg-gray-800 p-3 rounded col-span-2">
+            Win Rate: ${s.games?((s.wins/s.games)*100).toFixed(1):0}%
+        </div>
+    </div>
+    <button onclick="location.reload()" class="mt-4 bg-gray-700 px-4 py-2 rounded">Back</button>
+    `;
+}
+
+// ======================
+// ENGINE (MINIMAX)
+// ======================
+const val={p:100,n:320,b:330,r:500,q:900,k:20000};
+
+function evalBoard(){
+    let total=0;
+    game.board().forEach(r=>{
+        r.forEach(p=>{
+            if(!p) return;
+            total += p.color==='w'?val[p.type]:-val[p.type];
+        });
+    });
+    return total;
+}
+
+function minimax(depth,alpha,beta,maximizing){
+    if(depth===0 || game.game_over()) return evalBoard();
+
+    let moves = game.moves();
+
+    if(maximizing){
+        let max=-Infinity;
+        for(let m of moves){
+            game.move(m);
+            let v=minimax(depth-1,alpha,beta,false);
+            game.undo();
+            max=Math.max(max,v);
+            alpha=Math.max(alpha,v);
+            if(beta<=alpha) break;
+        }
+        return max;
+    } else {
+        let min=Infinity;
+        for(let m of moves){
+            game.move(m);
+            let v=minimax(depth-1,alpha,beta,true);
+            game.undo();
+            min=Math.min(min,v);
+            beta=Math.min(beta,v);
+            if(beta<=alpha) break;
+        }
+        return min;
+    }
+}
+
+function bestMove(depth){
+    let best=null;
+    let bestVal=-Infinity;
+
+    for(let m of game.moves()){
+        game.move(m);
+        let v=minimax(depth-1,-Infinity,Infinity,false);
+        game.undo();
+
+        if(v>bestVal){
+            bestVal=v;
+            best=m;
+        }
+    }
+    return best;
+}
+
+// ======================
+// BOARD
+// ======================
+const pieces={
+p:'♙',r:'♖',n:'♘',b:'♗',q:'♕',k:'♔',
+P:'♟',R:'♜',N:'♞',B:'♝',Q:'♛',K:'♚'
+};
+
+function render(){
+    board.innerHTML="";
+    let b=game.board();
+
+    for(let i=0;i<8;i++){
+        for(let j=0;j<8;j++){
+            let sq=document.createElement("div");
+            let name=String.fromCharCode(97+j)+(8-i);
+
+            sq.className="square "+((i+j)%2?"dark":"light");
+            sq.dataset.square=name;
+
+            let p=b[i][j];
+            if(p) sq.textContent=pieces[p.color==='w'?p.type.toUpperCase():p.type];
+
+            if(validMoves.includes(name)) sq.classList.add("valid-move");
+            if(selected===name) sq.classList.add("selected");
+
+            sq.onclick=()=>clickSquare(name);
+
+            board.appendChild(sq);
+        }
+    }
+
+    status.textContent = game.turn()==='w'?"White":"Black";
+}
+
+// ======================
+// CLICK
+// ======================
+function clickSquare(sq){
+    if(isGameOver) return;
+
+    let piece=game.get(sq);
+
+    if(selected){
+        if(validMoves.includes(sq)){
+            game.move({from:selected,to:sq});
+            selected=null;
+            validMoves=[];
+            moveStart=performance.now();
+            render();
+            setTimeout(botMove,200);
+        } else {
+            selected=null;
+            validMoves=[];
+        }
+    } else if(piece && piece.color===game.turn()){
+        selected=sq;
+        validMoves=game.moves({square:sq,verbose:true}).map(m=>m.to);
+    }
+
+    render();
+}
+
+// ======================
+// BOT
+// ======================
+function botMove(){
+    if(game.game_over()){
+        endGame();
+        return;
+    }
+
+    let depth=2;
+    if(difficulty>50) depth=3;
+    if(difficulty>75) depth=4;
+    if(difficulty>90) depth=5;
+
+    let move=bestMove(depth);
+    game.move(move);
+
+    moveStart=performance.now();
+    render();
+
+    if(game.game_over()) endGame();
+}
+
+// ======================
+// START
+// ======================
+let difficulty=80;
+
+function startGame(){
+    home.classList.add("hidden");
+    gameDiv.classList.remove("hidden");
+
+    game.reset();
+    isGameOver=false;
+
+    startTimers();
+    render();
+}
+
+// ======================
+// GAME END + REVIEW
+// ======================
+function endGame(){
+    isGameOver=true;
+
+    let s=getStats();
+    s.games++;
+
+    if(game.in_checkmate()){
+        if(game.turn()==='w'){ s.losses++; }
+        else { s.wins++; s.best=Math.max(s.best,difficulty); }
+    } else s.draws++;
+
+    saveStats(s);
+
+    alert("Game Over");
+}
+</script>
+
+</body>
+</html>
