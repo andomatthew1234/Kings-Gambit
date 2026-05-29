@@ -81,11 +81,11 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
     </div>
 
     <div class="space-y-2">
-        <button id="navNewMatch" class="nav-item active" onclick="setActiveSidebarNav('navNewMatch'); startGame();">
+        <button id="navNewMatch" class="nav-item active" onclick="if(matchActive){exitMatch()} else {startGame()}">
             <img src="resources/create_match.png" alt="" class="h-5 w-5 object-contain">
-            <span>New match</span>
+            <span id="navNewMatchLabel">New match</span>
         </button>
-        <button id="currentMatchItem" class="nav-item hidden" onclick="setActiveSidebarNav('currentMatchItem'); setSidebarStatus('Current match is active. Resume the board to continue the game.');">
+        <button id="currentMatchItem" class="nav-item hidden" onclick="showGameView(); setActiveSidebarNav('currentMatchItem');">
             <img src="resources/current_match.png" alt="" class="h-5 w-5 object-contain">
             <span>Current match</span>
         </button>
@@ -94,6 +94,10 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
     <div class="mt-6">
         <p class="mb-2 text-[10px] font-bold uppercase tracking-[0.28em] text-gray-400"># Statistics and coach</p>
         <div class="space-y-2">
+            <button id="navStats" class="nav-item" onclick="showStatsView();">
+                <img src="resources/stats.png" alt="" class="h-5 w-5 object-contain">
+                <span>Stats</span>
+            </button>
             <button id="navPuzzles" class="nav-item" onclick="setActiveSidebarNav('navPuzzles'); showComingSoon('Puzzles');">
                 <img src="resources/puzzles.png" alt="" class="h-5 w-5 object-contain">
                 <span>Puzzles</span>
@@ -108,6 +112,8 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
     <div class="mt-6 rounded-xl border border-gray-700 bg-gray-800/80 p-3">
         <p class="text-[10px] uppercase tracking-[0.26em] text-gray-400">Sidebar status</p>
         <p id="sidebarStatus" class="mt-2 text-sm text-gray-200">Start a new match to unlock the live board.</p>
+        <p class="mt-3 text-[10px] uppercase tracking-[0.26em] text-gray-400">Coach message</p>
+        <p id="coachMessage" class="mt-1 text-sm text-amber-200">The board awaits. Make your first move.</p>
     </div>
 </aside>
 
@@ -120,7 +126,7 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
         <p class="text-xs text-gray-400 mt-2">100 allows the bot maximum calculation time and depth.</p>
     </div>
 
-    <button id="newGameButton" onclick="startGame()" class="bg-blue-600 hover:bg-blue-500 transition px-4 py-3 rounded w-full mb-3 font-bold shadow flex items-center justify-center gap-2">
+    <button id="newGameButton" onclick="if(matchActive){exitMatch()} else {startGame()}" class="bg-blue-600 hover:bg-blue-500 transition px-4 py-3 rounded w-full mb-3 font-bold shadow flex items-center justify-center gap-2">
         <img src="resources/create_match.png" alt="" class="h-5 w-5 object-contain">
         <span id="newGameButtonLabel">New Game</span>
     </button>
@@ -147,7 +153,9 @@ const timerEl = document.getElementById('timer');
 const statusEl = document.getElementById('status');
 const diffInputEl = document.getElementById('diffInput');
 const sidebarStatusEl = document.getElementById('sidebarStatus');
+const coachMessageEl = document.getElementById('coachMessage');
 const currentMatchItemEl = document.getElementById('currentMatchItem');
+const navNewMatchLabelEl = document.getElementById('navNewMatchLabel');
 const newGameButtonLabelEl = document.getElementById('newGameButtonLabel');
 
 const game = new Chess();
@@ -156,13 +164,68 @@ let matchActive = false;
 let validMoves = [];
 let isGameOver = false;
 let difficulty = 100;
+let currentView = 'home';
+const coachMessages = [
+    "That pawn is looking sharp — don't let it grow into a threat.",
+    "A tactical blunder is always one move away. Stay focused.",
+    "Your queen wants room. Give her a lane and watch the pressure build.",
+    "That bishop is out of line. Rotate your pieces and regain control.",
+    "The center is the battlefield. Hold it, and the game bends to you.",
+    "Careful — your king is exposed. The board doesn't forgive hesitation.",
+    "Nice tempo. Keep the initiative and force the bot to react.",
+    "That move was ambitious. Let's see if the opponent can handle the pressure."
+];
 
 function setSidebarStatus(message){
     if(sidebarStatusEl) sidebarStatusEl.textContent = message;
 }
 
+function setCoachMessage(message){
+    if(coachMessageEl) coachMessageEl.textContent = message;
+}
+
+function showCoachMessage(){
+    const index = Math.floor(Math.random() * coachMessages.length);
+    setCoachMessage(coachMessages[index]);
+}
+
+function showHomeView(){
+    currentView = 'home';
+    matchActive = false;
+    isGameOver = true;
+    game.reset();
+    selected = null;
+    validMoves = [];
+    homeEl.classList.remove('hidden');
+    statsEl.classList.add('hidden');
+    gameDivEl.classList.add('hidden');
+    updateSidebarState();
+}
+
+function showGameView(){
+    currentView = 'game';
+    homeEl.classList.add('hidden');
+    statsEl.classList.add('hidden');
+    gameDivEl.classList.remove('hidden');
+    updateSidebarState();
+}
+
+function showStatsView(){
+    currentView = 'stats';
+    matchActive = false;
+    isGameOver = true;
+    game.reset();
+    selected = null;
+    validMoves = [];
+    homeEl.classList.add('hidden');
+    gameDivEl.classList.add('hidden');
+    statsEl.classList.remove('hidden');
+    setCoachMessage('Stats opened. Check your performance and keep sharpening your play.');
+    updateSidebarState();
+}
+
 function setActiveSidebarNav(activeId){
-    const navIds = ['navNewMatch', 'currentMatchItem', 'navPuzzles', 'navCoach'];
+    const navIds = ['navNewMatch', 'currentMatchItem', 'navStats', 'navPuzzles', 'navCoach'];
     navIds.forEach(id => {
         const el = document.getElementById(id);
         if(el) el.classList.remove('active');
@@ -174,6 +237,12 @@ function setActiveSidebarNav(activeId){
 
 function showComingSoon(pageName){
     setSidebarStatus(`${pageName} is coming soon.`);
+    setCoachMessage(`The ${pageName.toLowerCase()} board is still under construction. Stay tuned.`);
+}
+
+function exitMatch(){
+    showHomeView();
+    setCoachMessage('Match exited. The board is clear and the homepage is back in view.');
 }
 
 function updateSidebarState(){
@@ -181,16 +250,25 @@ function updateSidebarState(){
         currentMatchItemEl.classList.toggle('hidden', !matchActive);
     }
 
+    if(navNewMatchLabelEl){
+        navNewMatchLabelEl.textContent = matchActive ? 'Exit match' : 'New match';
+    }
+
     if(newGameButtonLabelEl){
-        newGameButtonLabelEl.textContent = matchActive ? 'Restart match' : 'New Game';
+        newGameButtonLabelEl.textContent = matchActive ? 'Exit match' : 'New Game';
     }
 
     if(matchActive){
-        setActiveSidebarNav('currentMatchItem');
         setSidebarStatus('Current match is active. Resume the board to continue the game.');
+        setActiveSidebarNav('currentMatchItem');
     } else {
-        setActiveSidebarNav('navNewMatch');
-        setSidebarStatus('Start a new match to unlock the live board.');
+        if(currentView === 'stats'){
+            setActiveSidebarNav('navStats');
+            setSidebarStatus('Statistics dashboard is open.');
+        } else {
+            setActiveSidebarNav('navNewMatch');
+            setSidebarStatus('Start a new match to unlock the live board.');
+        }
     }
 }
 
@@ -235,10 +313,7 @@ function getStats(){
 function saveStats(s){ localStorage.setItem("stats", JSON.stringify(s)); }
 
 function showStats(){
-    matchActive = false;
-    updateSidebarState();
-    homeEl.classList.add("hidden");
-    statsEl.classList.remove("hidden");
+    showStatsView();
     let s = getStats();
     statsEl.innerHTML = `
     <h1 class="text-4xl mb-6 font-bold">Dashboard</h1>
@@ -254,7 +329,7 @@ function showStats(){
             Highest Diff Beaten: ${s.best}
         </div>
     </div>
-    <button onclick="location.reload()" class="mt-6 bg-gray-700 hover:bg-gray-600 transition px-6 py-3 rounded font-bold w-full">Back to Menu</button>
+    <button onclick="showHomeView()" class="mt-6 bg-gray-700 hover:bg-gray-600 transition px-6 py-3 rounded font-bold w-full">Back to Menu</button>
     `;
 }
 
@@ -472,6 +547,7 @@ function clickSquare(sq){
             selected = null;
             validMoves = [];
             moveStart = Date.now();
+            showCoachMessage();
             
             render();
             statusEl.textContent = "Bot is thinking...";
@@ -500,6 +576,7 @@ function botMove(){
 
     let move = getBestMove();
     game.move(move);
+    showCoachMessage();
 
     totalBlackTime += (Date.now() - moveStart);
     moveStart = Date.now();
@@ -514,15 +591,16 @@ function botMove(){
 function startGame(){
     difficulty = parseInt(diffInputEl.value);
     matchActive = true;
-    updateSidebarState();
-    homeEl.classList.add("hidden");
-    statsEl.classList.add("hidden");
-    gameDivEl.classList.remove("hidden");
-
-    game.reset();
+    currentView = 'game';
     isGameOver = false;
+    game.reset();
     selected = null;
     validMoves = [];
+    homeEl.classList.add('hidden');
+    statsEl.classList.add('hidden');
+    gameDivEl.classList.remove('hidden');
+    showCoachMessage();
+    updateSidebarState();
 
     startTimers();
     render();
