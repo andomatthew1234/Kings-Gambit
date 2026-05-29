@@ -11,11 +11,13 @@
 <style>
 body { font-family: Inter, sans-serif; }
 .board {
-    display:grid;
-    grid-template-columns:repeat(8,1fr);
-    aspect-ratio:1;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    aspect-ratio: 1 / 1;
+    width: 100%;
 }
-.square { display:flex; justify-content:center; align-items:center; font-size:2rem; }
+.square { display:flex; justify-content:center; align-items:center; font-size:2.5rem; cursor:pointer; }
 .light { background:#f0d9b5; }
 .dark { background:#b58863; }
 .selected { background:#6b9ac4!important; }
@@ -32,49 +34,73 @@ body { font-family: Inter, sans-serif; }
 
 <body class="bg-gray-900 text-white flex flex-col items-center p-4">
 
-<!-- TIMER -->
-<div id="timer" class="absolute top-4 left-4 bg-gray-800 px-3 py-2 rounded"></div>
+<div id="timer" class="absolute top-4 left-4 bg-gray-800 px-3 py-2 rounded text-sm leading-relaxed whitespace-pre-wrap shadow"></div>
 
-<!-- HOME -->
-<div id="home">
-<h1 class="text-5xl mb-6">King's Gambit</h1>
-<button onclick="startGame()" class="bg-blue-600 px-4 py-3 rounded w-full mb-3">New Game</button>
-<button onclick="showStats()" class="bg-green-600 px-4 py-3 rounded w-full">Stats</button>
+<div id="home" class="w-full max-w-sm text-center mt-20">
+    <h1 class="text-5xl mb-6 font-bold">King's Gambit</h1>
+    
+    <div class="mb-6 text-left bg-gray-800 p-4 rounded shadow">
+        <label class="block mb-2 font-bold">Bot Difficulty: <span id="diffDisplay">100</span></label>
+        <input type="range" id="diffInput" min="1" max="100" value="100" class="w-full cursor-pointer" oninput="document.getElementById('diffDisplay').innerText = this.value">
+        <p class="text-xs text-gray-400 mt-2">100 allows the bot maximum calculation time and depth.</p>
+    </div>
+
+    <button onclick="startGame()" class="bg-blue-600 hover:bg-blue-500 transition px-4 py-3 rounded w-full mb-3 font-bold shadow">New Game</button>
+    <button onclick="showStats()" class="bg-green-600 hover:bg-green-500 transition px-4 py-3 rounded w-full font-bold shadow">Stats</button>
 </div>
 
-<!-- STATS -->
-<div id="stats" class="hidden text-center"></div>
+<div id="stats" class="hidden text-center mt-20 w-full max-w-sm"></div>
 
-<!-- GAME -->
-<div id="game" class="hidden">
-<div id="status" class="mb-2 text-xl"></div>
-<div id="board" class="board"></div>
+<div id="gameDiv" class="hidden flex flex-col items-center w-full max-w-lg mt-10">
+    <div id="status" class="mb-4 text-xl font-bold bg-gray-800 px-6 py-2 rounded shadow">White to move</div>
+    <div id="board" class="board border-4 border-gray-800 rounded shadow-2xl relative"></div>
 </div>
 
 <script>
+// DOM Elements
+const homeEl = document.getElementById('home');
+const statsEl = document.getElementById('stats');
+const gameDivEl = document.getElementById('gameDiv');
+const boardEl = document.getElementById('board');
+const timerEl = document.getElementById('timer');
+const statusEl = document.getElementById('status');
+const diffInputEl = document.getElementById('diffInput');
+
 const game = new Chess();
 let selected = null;
 let validMoves = [];
 let isGameOver = false;
+let difficulty = 100;
 
 // ======================
-// TIMER
+// TIMER LOGIC
 // ======================
-let gameStart, moveStart;
+let gameStart = 0;
+let moveStart = 0;
+let totalWhiteTime = 0;
+let totalBlackTime = 0;
 
 function startTimers(){
-    gameStart = performance.now();
-    moveStart = performance.now();
+    gameStart = Date.now();
+    moveStart = Date.now();
+    totalWhiteTime = 0;
+    totalBlackTime = 0;
     requestAnimationFrame(updateTimer);
 }
 
 function updateTimer(){
     if(isGameOver) return;
 
-    let g = ((performance.now()-gameStart)/1000).toFixed(1);
-    let m = ((performance.now()-moveStart)/1000).toFixed(1);
+    let now = Date.now();
+    let currentMoveTime = now - moveStart;
+    
+    let displayWhite = totalWhiteTime + (game.turn() === 'w' ? currentMoveTime : 0);
+    let displayBlack = totalBlackTime + (game.turn() === 'b' ? currentMoveTime : 0);
 
-    timer.textContent = `Game: ${g}s | Move: ${m}s`;
+    timerEl.innerHTML = `Total Game Time: ${((now - gameStart)/1000).toFixed(1)}s
+Your Search Time: ${(displayWhite/1000).toFixed(1)}s
+Bot Search Time: ${(displayBlack/1000).toFixed(1)}s`;
+    
     requestAnimationFrame(updateTimer);
 }
 
@@ -82,161 +108,265 @@ function updateTimer(){
 // STATS (LOCAL)
 // ======================
 function getStats(){
-    return JSON.parse(localStorage.getItem("stats")) || {
-        games:0,wins:0,losses:0,draws:0,best:0
-    };
+    return JSON.parse(localStorage.getItem("stats")) || { games:0, wins:0, losses:0, draws:0, best:0 };
 }
-function saveStats(s){ localStorage.setItem("stats",JSON.stringify(s)); }
+function saveStats(s){ localStorage.setItem("stats", JSON.stringify(s)); }
 
 function showStats(){
-    home.classList.add("hidden");
-    stats.classList.remove("hidden");
-
+    homeEl.classList.add("hidden");
+    statsEl.classList.remove("hidden");
     let s = getStats();
-
-    stats.innerHTML = `
-    <h1 class="text-4xl mb-4">Dashboard</h1>
-    <div class="grid grid-cols-2 gap-3">
-        <div class="bg-gray-800 p-3 rounded">Games: ${s.games}</div>
-        <div class="bg-gray-800 p-3 rounded">Wins: ${s.wins}</div>
-        <div class="bg-gray-800 p-3 rounded">Losses: ${s.losses}</div>
-        <div class="bg-gray-800 p-3 rounded">Draws: ${s.draws}</div>
-        <div class="bg-gray-800 p-3 rounded col-span-2">
-            Win Rate: ${s.games?((s.wins/s.games)*100).toFixed(1):0}%
+    statsEl.innerHTML = `
+    <h1 class="text-4xl mb-6 font-bold">Dashboard</h1>
+    <div class="grid grid-cols-2 gap-4 text-lg">
+        <div class="bg-gray-800 p-4 rounded shadow">Games: ${s.games}</div>
+        <div class="bg-gray-800 p-4 rounded shadow text-green-400">Wins: ${s.wins}</div>
+        <div class="bg-gray-800 p-4 rounded shadow text-red-400">Losses: ${s.losses}</div>
+        <div class="bg-gray-800 p-4 rounded shadow text-yellow-400">Draws: ${s.draws}</div>
+        <div class="bg-gray-800 p-4 rounded shadow col-span-2 font-bold">
+            Win Rate: ${s.games ? ((s.wins/s.games)*100).toFixed(1) : 0}%
+        </div>
+        <div class="bg-gray-800 p-4 rounded shadow col-span-2 font-bold text-blue-400">
+            Highest Diff Beaten: ${s.best}
         </div>
     </div>
-    <button onclick="location.reload()" class="mt-4 bg-gray-700 px-4 py-2 rounded">Back</button>
+    <button onclick="location.reload()" class="mt-6 bg-gray-700 hover:bg-gray-600 transition px-6 py-3 rounded font-bold w-full">Back to Menu</button>
     `;
 }
 
 // ======================
-// ENGINE (MINIMAX)
+// ENGINE (ITERATIVE DEEPENING + MINIMAX + QUIESCENCE)
 // ======================
-const val={p:100,n:320,b:330,r:500,q:900,k:20000};
+const val = { p:100, n:320, b:330, r:500, q:900, k:20000 };
+
+const centerBias = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 5, 5, 5, 5, 5, 5, 0],
+    [0, 5, 15, 20, 20, 15, 5, 0],
+    [0, 5, 20, 30, 30, 20, 5, 0],
+    [0, 5, 20, 30, 30, 20, 5, 0],
+    [0, 5, 15, 20, 20, 15, 5, 0],
+    [0, 5, 5, 5, 5, 5, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0]
+];
 
 function evalBoard(){
-    let total=0;
-    game.board().forEach(r=>{
-        r.forEach(p=>{
-            if(!p) return;
-            total += p.color==='w'?val[p.type]:-val[p.type];
-        });
-    });
+    let total = 0;
+    let b = game.board();
+    for(let i=0; i<8; i++){
+        for(let j=0; j<8; j++){
+            let p = b[i][j];
+            if(p) {
+                let score = val[p.type];
+                if (['n','b','p','q'].includes(p.type)) score += centerBias[i][j];
+                total += p.color === 'w' ? score : -score;
+            }
+        }
+    }
     return total;
 }
 
-function minimax(depth,alpha,beta,maximizing){
-    if(depth===0 || game.game_over()) return evalBoard();
+function orderMoves(moves) {
+    return moves.sort((a, b) => {
+        let scoreA = 0, scoreB = 0;
+        if (a.captured) scoreA = (10 * val[a.captured]) - val[a.piece];
+        if (a.promotion) scoreA += 1000;
+        
+        if (b.captured) scoreB = (10 * val[b.captured]) - val[b.piece];
+        if (b.promotion) scoreB += 1000;
+        
+        return scoreB - scoreA;
+    });
+}
 
-    let moves = game.moves();
+function quiesce(alpha, beta, maximizing, timeoutLimit) {
+    if (Date.now() > timeoutLimit) return evalBoard();
+    
+    let standPat = evalBoard();
+    if (maximizing) {
+        if (standPat >= beta) return beta;
+        if (alpha < standPat) alpha = standPat;
+    } else {
+        if (standPat <= alpha) return alpha;
+        if (beta > standPat) beta = standPat;
+    }
 
-    if(maximizing){
-        let max=-Infinity;
-        for(let m of moves){
+    let moves = orderMoves(game.moves({verbose: true}).filter(m => m.captured));
+
+    if (maximizing) {
+        for (let m of moves) {
             game.move(m);
-            let v=minimax(depth-1,alpha,beta,false);
+            let score = quiesce(alpha, beta, false, timeoutLimit);
             game.undo();
-            max=Math.max(max,v);
-            alpha=Math.max(alpha,v);
-            if(beta<=alpha) break;
+            if (score >= beta) return beta;
+            if (score > alpha) alpha = score;
+        }
+        return alpha;
+    } else {
+        for (let m of moves) {
+            game.move(m);
+            let score = quiesce(alpha, beta, true, timeoutLimit);
+            game.undo();
+            if (score <= alpha) return alpha;
+            if (score < beta) beta = score;
+        }
+        return beta;
+    }
+}
+
+function minimax(depth, alpha, beta, maximizing, timeoutLimit){
+    if (Date.now() > timeoutLimit) return evalBoard();
+
+    if (depth === 0) return quiesce(alpha, beta, maximizing, timeoutLimit);
+    
+    if (game.game_over()) {
+        if (game.in_checkmate()) return maximizing ? -99999 : 99999;
+        return 0; 
+    }
+
+    let moves = orderMoves(game.moves({verbose: true}));
+
+    if (maximizing) {
+        let max = -Infinity;
+        for (let m of moves) {
+            game.move(m);
+            let v = minimax(depth - 1, alpha, beta, false, timeoutLimit);
+            game.undo();
+            max = Math.max(max, v);
+            alpha = Math.max(alpha, v);
+            if (beta <= alpha) break;
         }
         return max;
     } else {
-        let min=Infinity;
-        for(let m of moves){
+        let min = Infinity;
+        for (let m of moves) {
             game.move(m);
-            let v=minimax(depth-1,alpha,beta,true);
+            let v = minimax(depth - 1, alpha, beta, true, timeoutLimit);
             game.undo();
-            min=Math.min(min,v);
-            beta=Math.min(beta,v);
-            if(beta<=alpha) break;
+            min = Math.min(min, v);
+            beta = Math.min(beta, v);
+            if (beta <= alpha) break;
         }
         return min;
     }
 }
 
-function bestMove(depth){
-    let best=null;
-    let bestVal=-Infinity;
+function getBestMove(){
+    let bestMove = null;
+    let currentDepth = 1;
+    let timeLimit = Date.now() + (difficulty === 100 ? 3000 : difficulty * 20);
+    
+    while (currentDepth <= 5 && Date.now() < timeLimit) {
+        let tempBest = null;
+        let bestVal = Infinity; 
+        let moves = orderMoves(game.moves({verbose: true}));
 
-    for(let m of game.moves()){
-        game.move(m);
-        let v=minimax(depth-1,-Infinity,Infinity,false);
-        game.undo();
+        for (let m of moves) {
+            game.move(m);
+            let v = minimax(currentDepth - 1, -Infinity, Infinity, true, timeLimit);
+            game.undo();
 
-        if(v>bestVal){
-            bestVal=v;
-            best=m;
+            if (v < bestVal) {
+                bestVal = v;
+                tempBest = m;
+            }
         }
+        
+        if (Date.now() > timeLimit) break; 
+        bestMove = tempBest;
+        currentDepth++;
     }
-    return best;
+
+    return bestMove || game.moves({verbose:true})[0];
 }
 
 // ======================
-// BOARD
+// BOARD RENDER
 // ======================
-const pieces={
-p:'♙',r:'♖',n:'♘',b:'♗',q:'♕',k:'♔',
-P:'♟',R:'♜',N:'♞',B:'♝',Q:'♛',K:'♚'
-};
+const solidPieces = { p:'♟', r:'♜', n:'♞', b:'♝', q:'♛', k:'♚' };
 
 function render(){
-    board.innerHTML="";
-    let b=game.board();
+    boardEl.innerHTML = "";
+    let b = game.board();
 
-    for(let i=0;i<8;i++){
-        for(let j=0;j<8;j++){
-            let sq=document.createElement("div");
-            let name=String.fromCharCode(97+j)+(8-i);
+    for(let i=0; i<8; i++){
+        for(let j=0; j<8; j++){
+            let sq = document.createElement("div");
+            let name = String.fromCharCode(97+j) + (8-i);
 
-            sq.className="square "+((i+j)%2?"dark":"light");
-            sq.dataset.square=name;
+            sq.className = "square relative " + ((i+j)%2 ? "dark" : "light");
+            sq.dataset.square = name;
 
-            let p=b[i][j];
-            if(p) sq.textContent=pieces[p.color==='w'?p.type.toUpperCase():p.type];
+            let p = b[i][j];
+            if(p) {
+                let pieceSpan = document.createElement("span");
+                pieceSpan.textContent = solidPieces[p.type];
+                pieceSpan.style.userSelect = "none";
+                pieceSpan.style.cursor = "pointer";
+                
+                // Set explicit colors so pieces don't inherit the global white text
+                if (p.color === 'w') { 
+                    pieceSpan.style.color = "#ffffff";
+                    pieceSpan.style.textShadow = "0px 1px 4px rgba(0,0,0,0.8), 0px 0px 2px #000"; 
+                } else {
+                    pieceSpan.style.color = "#000000";
+                    pieceSpan.style.textShadow = "0px 1px 2px rgba(255,255,255,0.4)";
+                }
+                
+                sq.appendChild(pieceSpan);
+            }
 
             if(validMoves.includes(name)) sq.classList.add("valid-move");
-            if(selected===name) sq.classList.add("selected");
+            if(selected === name) sq.classList.add("selected");
 
-            sq.onclick=()=>clickSquare(name);
-
-            board.appendChild(sq);
+            sq.onclick = () => clickSquare(name);
+            boardEl.appendChild(sq);
         }
     }
 
-    status.textContent = game.turn()==='w'?"White":"Black";
+    let isCheck = game.in_check() ? " (Check)" : "";
+    statusEl.textContent = (game.turn() === 'w' ? "White's Turn" : "Black's Turn") + isCheck;
 }
 
 // ======================
-// CLICK
+// CLICK HANDLING
 // ======================
 function clickSquare(sq){
-    if(isGameOver) return;
+    if(isGameOver || game.turn() === 'b') return; 
 
-    let piece=game.get(sq);
+    let piece = game.get(sq);
 
-    if(selected){
-        if(validMoves.includes(sq)){
-            game.move({from:selected,to:sq});
-            selected=null;
-            validMoves=[];
-            moveStart=performance.now();
+    if(selected) {
+        let moves = game.moves({square: selected, verbose: true});
+        let move = moves.find(m => m.to === sq);
+
+        if(move) {
+            if(move.flags.includes('p') || move.flags.includes('np')) move.promotion = 'q';
+            
+            game.move(move);
+            totalWhiteTime += (Date.now() - moveStart);
+            selected = null;
+            validMoves = [];
+            moveStart = Date.now();
+            
             render();
-            setTimeout(botMove,200);
+            statusEl.textContent = "Bot is thinking...";
+            
+            setTimeout(botMove, 50);
         } else {
-            selected=null;
-            validMoves=[];
+            selected = null;
+            validMoves = [];
+            render();
         }
-    } else if(piece && piece.color===game.turn()){
-        selected=sq;
-        validMoves=game.moves({square:sq,verbose:true}).map(m=>m.to);
+    } else if(piece && piece.color === 'w'){
+        selected = sq;
+        validMoves = game.moves({square: sq, verbose: true}).map(m => m.to);
+        render();
     }
-
-    render();
 }
 
 // ======================
-// BOT
+// BOT CONTROLLER
 // ======================
 function botMove(){
     if(game.game_over()){
@@ -244,15 +374,11 @@ function botMove(){
         return;
     }
 
-    let depth=2;
-    if(difficulty>50) depth=3;
-    if(difficulty>75) depth=4;
-    if(difficulty>90) depth=5;
-
-    let move=bestMove(depth);
+    let move = getBestMove();
     game.move(move);
 
-    moveStart=performance.now();
+    totalBlackTime += (Date.now() - moveStart);
+    moveStart = Date.now();
     render();
 
     if(game.game_over()) endGame();
@@ -261,14 +387,15 @@ function botMove(){
 // ======================
 // START
 // ======================
-let difficulty=80;
-
 function startGame(){
-    home.classList.add("hidden");
-    gameDiv.classList.remove("hidden");
+    difficulty = parseInt(diffInputEl.value);
+    homeEl.classList.add("hidden");
+    gameDivEl.classList.remove("hidden");
 
     game.reset();
-    isGameOver=false;
+    isGameOver = false;
+    selected = null;
+    validMoves = [];
 
     startTimers();
     render();
@@ -278,19 +405,36 @@ function startGame(){
 // GAME END + REVIEW
 // ======================
 function endGame(){
-    isGameOver=true;
+    isGameOver = true;
 
-    let s=getStats();
+    let s = getStats();
     s.games++;
 
+    let resultMsg = "Draw!";
+
     if(game.in_checkmate()){
-        if(game.turn()==='w'){ s.losses++; }
-        else { s.wins++; s.best=Math.max(s.best,difficulty); }
-    } else s.draws++;
+        if(game.turn() === 'w'){ 
+            s.losses++; 
+            resultMsg = "Black Wins by Checkmate!";
+        } else { 
+            s.wins++; 
+            s.best = Math.max(s.best, difficulty); 
+            resultMsg = "White Wins by Checkmate!";
+        }
+    } else {
+        s.draws++;
+        if(game.in_stalemate()) resultMsg = "Draw by Stalemate!";
+        else if(game.in_threefold_repetition()) resultMsg = "Draw by Repetition!";
+        else if(game.insufficient_material()) resultMsg = "Draw by Insufficient Material!";
+    }
 
     saveStats(s);
-
-    alert("Game Over");
+    statusEl.textContent = resultMsg;
+    
+    setTimeout(() => {
+        alert(resultMsg);
+        location.reload();
+    }, 500);
 }
 </script>
 
