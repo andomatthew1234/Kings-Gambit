@@ -10,6 +10,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
 
 <style>
+:root {
+    --page-bg: #0f172a;
+    --panel-bg: rgba(15, 23, 42, 0.95);
+    --panel-border: rgba(71, 85, 105, 0.9);
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --board-light: #f0d9b5;
+    --board-dark: #b58863;
+    --selected: #6b9ac4;
+    --button-bg: #2563eb;
+    --button-hover: #3b82f6;
+    --danger-bg: #dc2626;
+    --danger-hover: #ef4444;
+}
+
 body {
     font-family: Inter, sans-serif;
     box-sizing: border-box;
@@ -17,6 +32,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
+    background: var(--page-bg);
+    color: var(--text-primary);
 }
 #mainContent {
     width: 100%;
@@ -30,6 +48,8 @@ body {
     height: auto;
     margin-bottom: 1rem;
     z-index: 20;
+    background: var(--panel-bg);
+    border-color: var(--panel-border);
 }
 .nav-item {
     display:flex;
@@ -90,10 +110,40 @@ body {
         width: min(calc(100vw - 22rem), 52rem);
     }
 }
+body[data-theme="dark"] {
+    --page-bg: #0f172a;
+    --panel-bg: rgba(15, 23, 42, 0.95);
+    --panel-border: rgba(71, 85, 105, 0.9);
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --board-light: #f0d9b5;
+    --board-dark: #b58863;
+    --selected: #6b9ac4;
+}
+body[data-theme="blue"] {
+    --page-bg: #0f172a;
+    --panel-bg: rgba(30, 58, 138, 0.9);
+    --panel-border: rgba(59, 130, 246, 0.8);
+    --text-primary: #e0f2fe;
+    --text-muted: #93c5fd;
+    --board-light: #dbeafe;
+    --board-dark: #1e40af;
+    --selected: #60a5fa;
+}
+body[data-theme="classic"] {
+    --page-bg: #f8fafc;
+    --panel-bg: rgba(248, 250, 252, 0.92);
+    --panel-border: rgba(148, 163, 184, 0.9);
+    --text-primary: #0f172a;
+    --text-muted: #475569;
+    --board-light: #f5f5dc;
+    --board-dark: #b58863;
+    --selected: #2563eb;
+}
 .square { display:flex; justify-content:center; align-items:center; font-size:2.5rem; cursor:pointer; }
-.light { background:#f0d9b5; }
-.dark { background:#b58863; }
-.selected { background:#6b9ac4!important; }
+.light { background: var(--board-light); }
+.dark { background: var(--board-dark); }
+.selected { background: var(--selected)!important; }
 .valid-move::after {
     content:'';
     width:30%;
@@ -105,11 +155,11 @@ body {
 </style>
 </head>
 
-<body class="bg-gray-900 text-white flex flex-col items-center p-4">
+<body class="flex flex-col items-center p-4">
 
 <div id="timer" class="absolute top-4 left-4 bg-gray-800 px-3 py-2 rounded text-sm leading-relaxed whitespace-pre-wrap shadow"></div>
 
-<aside id="sidebar" class="bg-gray-950/95 border border-gray-700/80 rounded-2xl p-5 shadow-2xl backdrop-blur"
+<aside id="sidebar" class="rounded-2xl p-5 shadow-2xl backdrop-blur"
        aria-label="Primary navigation">
     <div class="flex items-center justify-between mb-5">
         <div>
@@ -145,13 +195,21 @@ body {
                 <img src="resources/ai.png" alt="" class="h-5 w-5 object-contain">
                 <span>AI coach</span>
             </button>
+            <button id="navContactHub" class="nav-item" onclick="contactHub();">
+                <span class="h-5 w-5 flex items-center justify-center text-lg">📬</span>
+                <span>Contact hub</span>
+            </button>
+            <button id="navSettings" class="nav-item" onclick="showSettings();">
+                <span class="h-5 w-5 flex items-center justify-center text-xl">⚙️</span>
+                <span>Settings</span>
+            </button>
         </div>
     </div>
 
     <div class="mt-6 rounded-xl border border-gray-700 bg-gray-800/80 p-3">
         <p class="text-[10px] uppercase tracking-[0.26em] text-gray-400">Sidebar status</p>
         <p id="sidebarStatus" class="mt-2 text-sm text-gray-200">Start a new match to unlock the live board.</p>
-        <p class="mt-3 text-[10px] uppercase tracking-[0.26em] text-gray-400">Coach message</p>
+        <p class="mt-3 text-[10px] uppercase tracking-[0.26em] text-gray-400">Matthew A's message</p>
         <p id="coachMessage" class="mt-1 text-sm text-amber-200">The board awaits. Make your first move.</p>
     </div>
 </aside>
@@ -162,8 +220,8 @@ body {
     
     <div class="mb-6 text-left bg-gray-800 p-4 rounded shadow">
         <label class="block mb-2 font-bold">Bot Difficulty: <span id="diffDisplay">100</span></label>
-        <input type="range" id="diffInput" min="1" max="100" value="100" class="w-full cursor-pointer" oninput="document.getElementById('diffDisplay').innerText = this.value">
-        <p class="text-xs text-gray-400 mt-2">100 allows the bot maximum calculation time and depth.</p>
+        <input type="range" id="diffInput" min="1" max="100" value="100" class="w-full cursor-pointer" oninput="updateDifficultyInfo(this.value)">
+        <p class="block text-xs text-gray-400 mt-2" id="difficultyInfo">100 allows the bot maximum calculation time and depth.</p>
     </div>
 
     <button id="newGameButton" onclick="if(matchActive){exitMatch()} else {startGame()}" class="bg-blue-600 hover:bg-blue-500 transition px-4 py-3 rounded w-full mb-3 font-bold shadow flex items-center justify-center gap-2">
@@ -178,6 +236,30 @@ body {
 
 <div id="stats" class="hidden text-center mt-20 w-full max-w-sm"></div>
 
+<div id="settings" class="hidden text-left mt-20 w-full max-w-sm">
+    <h1 class="text-4xl mb-6 font-bold">Settings</h1>
+    <div class="space-y-4 bg-gray-800 p-4 rounded shadow text-sm">
+        <div>
+            <p class="mb-3 font-bold text-white">Theme</p>
+            <div class="space-y-3">
+                <label class="flex items-center gap-3">
+                    <input type="radio" name="theme" value="dark" onchange="setTheme('dark')" checked>
+                    <span>Dark</span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="radio" name="theme" value="blue" onchange="setTheme('blue')">
+                    <span>Blue</span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="radio" name="theme" value="classic" onchange="setTheme('classic')">
+                    <span>Classic</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <button onclick="showHomeView()" class="mt-6 bg-gray-700 hover:bg-gray-600 transition px-6 py-3 rounded font-bold w-full">Back to Menu</button>
+</div>
+
 <div id="gameDiv" class="hidden flex flex-col items-center w-full max-w-[95vw] mt-10">
     <div id="status" class="mb-4 text-xl font-bold bg-gray-800 px-6 py-2 rounded shadow">White to move</div>
     <div id="gameLayout" class="flex flex-col xl:flex-row items-start gap-6 w-full">
@@ -187,8 +269,17 @@ body {
                 Resign match
             </button>
             <div class="rounded-2xl border border-gray-700 bg-gray-950/90 p-4 text-left">
-                <p class="mb-3 text-sm uppercase tracking-[0.24em] text-gray-400 font-bold">Recent moves</p>
+                <p class="mb-3 text-sm uppercase tracking-[0.24em] text-gray-400 font-bold">Match moves</p>
                 <div id="moveHistory" class="space-y-2 text-sm text-gray-200 max-h-[34rem] overflow-y-auto"></div>
+            </div>
+        </div>
+    </div>
+    <div id="sitePopup" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6">
+        <div class="popup-card rounded-3xl bg-slate-950/95 p-6 shadow-2xl border border-slate-700 w-full max-w-md text-left">
+            <h2 id="popupTitle" class="text-2xl font-bold mb-4"></h2>
+            <p id="popupMessage" class="text-sm text-slate-200 leading-relaxed mb-6"></p>
+            <div class="flex justify-end gap-3">
+                <button id="popupAction" class="bg-blue-600 hover:bg-blue-500 text-white rounded-full px-5 py-2 font-bold">OK</button>
             </div>
         </div>
     </div>
@@ -199,6 +290,7 @@ body {
 // DOM Elements
 const homeEl = document.getElementById('home');
 const statsEl = document.getElementById('stats');
+const settingsEl = document.getElementById('settings');
 const gameDivEl = document.getElementById('gameDiv');
 const boardEl = document.getElementById('board');
 const resignButtonEl = document.getElementById('resignButton');
@@ -206,6 +298,11 @@ const moveHistoryEl = document.getElementById('moveHistory');
 const timerEl = document.getElementById('timer');
 const statusEl = document.getElementById('status');
 const diffInputEl = document.getElementById('diffInput');
+const difficultyInfoEl = document.getElementById('difficultyInfo');
+const sitePopupEl = document.getElementById('sitePopup');
+const popupTitleEl = document.getElementById('popupTitle');
+const popupMessageEl = document.getElementById('popupMessage');
+const popupActionEl = document.getElementById('popupAction');
 const sidebarStatusEl = document.getElementById('sidebarStatus');
 const coachMessageEl = document.getElementById('coachMessage');
 const currentMatchItemEl = document.getElementById('currentMatchItem');
@@ -219,15 +316,16 @@ let validMoves = [];
 let isGameOver = false;
 let difficulty = 100;
 let currentView = 'home';
+const diffDisplayEl = document.getElementById('diffDisplay');
 const coachMessages = [
-    "That pawn is looking sharp — don't let it grow into a threat.",
-    "A tactical blunder is always one move away. Stay focused.",
-    "Your queen wants room. Give her a lane and watch the pressure build.",
-    "That bishop is out of line. Rotate your pieces and regain control.",
-    "The center is the battlefield. Hold it, and the game bends to you.",
-    "Careful — your king is exposed. The board doesn't forgive hesitation.",
-    "Nice tempo. Keep the initiative and force the bot to react.",
-    "That move was ambitious. Let's see if the opponent can handle the pressure."
+    "This is the part where you activate 80% of your brain power.",
+    "If it ain't broke, don't fix it.",
+    "Chess helpling: 0418 6767 6767.",
+    "Misclick identified. Select the 'resign game' button to undo your move.",
+    "#theydontpaymeenoughtobreakmykeyboard",
+    "These moves are sponsored by War Thunder. Use the code 4123 at checkout to get 100% off total price (free).",
+    "Stupid person identified. Better ask ChatGPT for this one.",
+    "For the next few moves, I would focus on aiming to kill the king - instead of what whatever this is."
 ];
 
 function setSidebarStatus(message){
@@ -253,6 +351,7 @@ function showHomeView(){
     homeEl.classList.remove('hidden');
     statsEl.classList.add('hidden');
     gameDivEl.classList.add('hidden');
+    settingsEl.classList.add('hidden');
     updateSidebarState();
 }
 
@@ -260,6 +359,7 @@ function showGameView(){
     currentView = 'game';
     homeEl.classList.add('hidden');
     statsEl.classList.add('hidden');
+    settingsEl.classList.add('hidden');
     gameDivEl.classList.remove('hidden');
     updateSidebarState();
 }
@@ -273,13 +373,29 @@ function showStatsView(){
     validMoves = [];
     homeEl.classList.add('hidden');
     gameDivEl.classList.add('hidden');
+    settingsEl.classList.add('hidden');
     statsEl.classList.remove('hidden');
     setCoachMessage('Stats opened. Check your performance and keep sharpening your play.');
     updateSidebarState();
 }
 
+function showSettingsView(){
+    currentView = 'settings';
+    matchActive = false;
+    isGameOver = true;
+    game.reset();
+    selected = null;
+    validMoves = [];
+    homeEl.classList.add('hidden');
+    gameDivEl.classList.add('hidden');
+    statsEl.classList.add('hidden');
+    settingsEl.classList.remove('hidden');
+    setCoachMessage('Settings opened. Choose your preferred game theme.');
+    updateSidebarState();
+}
+
 function setActiveSidebarNav(activeId){
-    const navIds = ['navNewMatch', 'currentMatchItem', 'navStats', 'navPuzzles', 'navCoach'];
+    const navIds = ['navNewMatch', 'currentMatchItem', 'navStats', 'navSettings', 'navPuzzles', 'navCoach'];
     navIds.forEach(id => {
         const el = document.getElementById(id);
         if(el) el.classList.remove('active');
@@ -319,6 +435,9 @@ function updateSidebarState(){
         if(currentView === 'stats'){
             setActiveSidebarNav('navStats');
             setSidebarStatus('Statistics dashboard is open.');
+        } else if(currentView === 'settings'){
+            setActiveSidebarNav('navSettings');
+            setSidebarStatus('Settings are open.');
         } else {
             setActiveSidebarNav('navNewMatch');
             setSidebarStatus('Start a new match to unlock the live board.');
@@ -622,9 +741,62 @@ function resignMatch(){
     setCoachMessage('Match resigned. The board will reset after the alert.');
 
     setTimeout(() => {
-        alert('You resigned the match.');
-        location.reload();
+        showPopup('Match Resigned', 'You resigned the match. Black wins.', 'OK', () => location.reload());
     }, 500);
+}
+
+function showSettings(){
+    showSettingsView();
+}
+
+function setTheme(theme){
+    if(!theme) return;
+    document.body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    const radio = document.querySelector(`input[name="theme"][value="${theme}"]`);
+    if(radio) radio.checked = true;
+}
+
+function contactHub(){
+    window.location.href = 'https://www.jotform.com/app/261531590934863';
+}
+
+function showPopup(title, message, buttonText = 'OK', callback){
+    if(!sitePopupEl || !popupTitleEl || !popupMessageEl || !popupActionEl) return;
+    popupTitleEl.textContent = title;
+    popupMessageEl.textContent = message;
+    popupActionEl.textContent = buttonText;
+    popupActionEl.onclick = () => {
+        closePopup();
+        if(typeof callback === 'function') callback();
+    };
+    sitePopupEl.classList.remove('hidden');
+}
+
+function closePopup(){
+    if(sitePopupEl) sitePopupEl.classList.add('hidden');
+}
+
+function loadTheme(){
+    const stored = localStorage.getItem('theme') || 'dark';
+    setTheme(stored);
+}
+
+function getDifficultyText(value){
+    const percent = Number(value);
+    if(percent >= 80) return '80% gives the bot strong depth with serious tactical awareness.';
+    if(percent >= 75) return '75% gives the bot solid calculation and good positional play.';
+    if(percent >= 50) return '50% gives the bot balanced play with decent calculation speed.';
+    if(percent >= 25) return '25% makes the bot less accurate but faster, good for practice.';
+    if(percent >= 10) return '10% means a quick bot with basic tactics and limited foresight.';
+    return '1% means a very weak bot best for easy warm-up games.';
+}
+
+function updateDifficultyInfo(value){
+    if(!difficultyInfoEl) return;
+    const percent = Number(value);
+    diffDisplayEl.textContent = percent;
+    difficultyInfoEl.textContent = getDifficultyText(percent);
 }
 
 // ======================
@@ -698,6 +870,7 @@ function startGame(){
     validMoves = [];
     homeEl.classList.add('hidden');
     statsEl.classList.add('hidden');
+    settingsEl.classList.add('hidden');
     gameDivEl.classList.remove('hidden');
     showCoachMessage();
     updateSidebarState();
@@ -722,11 +895,11 @@ function endGame(){
     if(game.in_checkmate()){
         if(game.turn() === 'w'){ 
             s.losses++; 
-            resultMsg = "Black Wins by Checkmate!";
+            resultMsg = "L, imagine being checkmated by the bot. Don't worry, every loss is a step towards improvement (sarcasm, Black wins by checkmate). Game made by Matthew Anderson";
         } else { 
             s.wins++; 
             s.best = Math.max(s.best, difficulty); 
-            resultMsg = "White Wins by Checkmate!";
+            resultMsg = "To unlock the win feature, purchase the Win pack. Game made by EA games. (White wins by checkmate)";
         }
     } else {
         s.draws++;
@@ -739,11 +912,12 @@ function endGame(){
     statusEl.textContent = resultMsg;
     
     setTimeout(() => {
-        alert(resultMsg);
-        location.reload();
+        showPopup('Game Over', resultMsg, 'OK', () => location.reload());
     }, 500);
 }
 
+loadTheme();
+updateDifficultyInfo(diffInputEl.value);
 updateSidebarState();
 </script>
 
