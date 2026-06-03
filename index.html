@@ -49,8 +49,16 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
     aspect-ratio: 1 / 1;
-    width: min(90vw, 42rem);
+    width: min(calc(100vw - 26rem), 52rem);
     max-width: 100%;
+    min-width: 24rem;
+}
+#gameLayout {
+    width: min(100%, calc(100vw - 22rem));
+    min-width: 0;
+}
+#gameSidebar {
+    min-width: 18rem;
 }
 .square { display:flex; justify-content:center; align-items:center; font-size:2.5rem; cursor:pointer; }
 .light { background:#f0d9b5; }
@@ -139,9 +147,20 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
 
 <div id="stats" class="hidden text-center mt-20 w-full max-w-sm"></div>
 
-<div id="gameDiv" class="hidden flex flex-col items-center w-full max-w-3xl mt-10">
+<div id="gameDiv" class="hidden flex flex-col items-center w-full max-w-[95vw] mt-10">
     <div id="status" class="mb-4 text-xl font-bold bg-gray-800 px-6 py-2 rounded shadow">White to move</div>
-    <div id="board" class="board border-4 border-gray-800 rounded shadow-2xl relative"></div>
+    <div id="gameLayout" class="flex flex-col xl:flex-row items-start gap-6 w-full">
+        <div id="board" class="board border-4 border-gray-800 rounded shadow-2xl relative"></div>
+        <div id="gameSidebar" class="flex flex-col gap-4 w-full max-w-sm">
+            <button id="resignButton" class="hidden bg-red-600 hover:bg-red-500 text-white transition px-4 py-3 rounded font-bold shadow w-full" onclick="resignMatch()">
+                Resign match
+            </button>
+            <div class="rounded-2xl border border-gray-700 bg-gray-950/90 p-4 text-left">
+                <p class="mb-3 text-sm uppercase tracking-[0.24em] text-gray-400 font-bold">Recent moves</p>
+                <div id="moveHistory" class="space-y-2 text-sm text-gray-200 max-h-[34rem] overflow-y-auto"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -150,6 +169,8 @@ const homeEl = document.getElementById('home');
 const statsEl = document.getElementById('stats');
 const gameDivEl = document.getElementById('gameDiv');
 const boardEl = document.getElementById('board');
+const resignButtonEl = document.getElementById('resignButton');
+const moveHistoryEl = document.getElementById('moveHistory');
 const timerEl = document.getElementById('timer');
 const statusEl = document.getElementById('status');
 const diffInputEl = document.getElementById('diffInput');
@@ -270,6 +291,10 @@ function updateSidebarState(){
             setActiveSidebarNav('navNewMatch');
             setSidebarStatus('Start a new match to unlock the live board.');
         }
+    }
+
+    if(resignButtonEl){
+        resignButtonEl.classList.toggle('hidden', !matchActive);
     }
 }
 
@@ -526,6 +551,48 @@ function render(){
 
     let isCheck = game.in_check() ? " (Check)" : "";
     statusEl.textContent = (game.turn() === 'w' ? "White's Turn" : "Black's Turn") + isCheck;
+    renderMoveHistory();
+}
+
+function renderMoveHistory(){
+    if(!moveHistoryEl) return;
+    let history = game.history({verbose:true});
+    if(!history.length){
+        moveHistoryEl.innerHTML = '<div class="text-sm text-gray-400">No moves yet.</div>';
+        return;
+    }
+    let html = '';
+    for(let i = 0; i < history.length; i += 2){
+        let white = history[i];
+        let black = history[i+1];
+        let moveNumber = Math.floor(i / 2) + 1;
+        html += `<div class="grid grid-cols-[auto_1fr_auto] gap-2 items-center rounded-xl bg-gray-900/80 p-3 border border-gray-800">
+                    <span class="text-gray-400">${moveNumber}.</span>
+                    <span class="font-semibold">${white.san}</span>
+                    <span class="text-gray-400">${black ? black.san : ''}</span>
+                 </div>`;
+    }
+    moveHistoryEl.innerHTML = html;
+}
+
+function resignMatch(){
+    if(!matchActive) return;
+    matchActive = false;
+    isGameOver = true;
+    updateSidebarState();
+
+    let s = getStats();
+    s.games++;
+    s.losses++;
+    saveStats(s);
+
+    statusEl.textContent = 'You resigned. Black wins.';
+    setCoachMessage('Match resigned. The board will reset after the alert.');
+
+    setTimeout(() => {
+        alert('You resigned the match.');
+        location.reload();
+    }, 500);
 }
 
 // ======================
