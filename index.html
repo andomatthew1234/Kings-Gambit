@@ -10,13 +10,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
 
 <style>
-body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-box; }
+body {
+    font-family: Inter, sans-serif;
+    box-sizing: border-box;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#mainContent {
+    width: 100%;
+    max-width: 90rem;
+}
 #sidebar {
-    position: fixed;
-    left: 1rem;
-    top: 1rem;
-    width: 18rem;
-    height: calc(100vh - 2rem);
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
     z-index: 20;
 }
 .nav-item {
@@ -44,21 +56,39 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
     background:rgba(37, 99, 235, 0.28);
     box-shadow:0 0 0 1px rgba(96, 165, 250, 0.35);
 }
+#gameLayout {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+}
+#gameSidebar {
+    min-width: 0;
+    width: 100%;
+}
 .board {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
     aspect-ratio: 1 / 1;
-    width: min(calc(100vw - 26rem), 52rem);
+    width: min(100%, 52rem);
     max-width: 100%;
-    min-width: 24rem;
+    min-width: 16rem;
 }
-#gameLayout {
-    width: min(100%, calc(100vw - 22rem));
-    min-width: 0;
-}
-#gameSidebar {
-    min-width: 18rem;
+@media (min-width: 1280px) {
+    #sidebar {
+        position: fixed;
+        left: 1rem;
+        top: 1rem;
+        width: 18rem;
+        height: calc(100vh - 2rem);
+        margin-bottom: 0;
+    }
+    #mainContent {
+        margin-left: calc(18rem + 2rem);
+    }
+    .board {
+        width: min(calc(100vw - 22rem), 52rem);
+    }
 }
 .square { display:flex; justify-content:center; align-items:center; font-size:2.5rem; cursor:pointer; }
 .light { background:#f0d9b5; }
@@ -126,6 +156,7 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
     </div>
 </aside>
 
+<div id="mainContent">
 <div id="home" class="w-full max-w-sm text-center mt-20">
     <h1 class="text-5xl mb-6 font-bold">King's Gambit</h1>
     
@@ -161,6 +192,7 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script>

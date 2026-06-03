@@ -1,5 +1,7 @@
 # ♟️ King's Gambit Chess
+**Access the app from: https://andomatthew1234.github.io/Kings-Gambit/. For more information, check the Let's get Started page.**
 **An unbloked chess app that runs of your device.**
+
 
 King's gambit is a chess platform that let's you get straight to the playing.
 
