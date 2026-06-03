@@ -82,7 +82,7 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
     </div>
 
     <div class="space-y-2">
-        <button id="navNewMatch" class="nav-item active" onclick="if(matchActive){exitMatch()} else {startGame()}">
+        <button id="navNewMatch" class="nav-item active" onclick="if(matchActive){exitMatch()} else if(currentView !== 'home'){showHomeView()} else {startGame()}">
             <img src="resources/create_match.png" alt="" class="h-5 w-5 object-contain">
             <span id="navNewMatchLabel">New match</span>
         </button>
@@ -95,7 +95,7 @@ body { font-family: Inter, sans-serif; padding-left: 20rem; box-sizing: border-b
     <div class="mt-6">
         <p class="mb-2 text-[10px] font-bold uppercase tracking-[0.28em] text-gray-400"># Statistics and coach</p>
         <div class="space-y-2">
-            <button id="navStats" class="nav-item" onclick="showStatsView();">
+            <button id="navStats" class="nav-item" onclick="showStats();">
                 <img src="resources/stats.png" alt="" class="h-5 w-5 object-contain">
                 <span>Stats</span>
             </button>
