@@ -94,6 +94,17 @@ body {
     max-width: 100%;
     min-width: 16rem;
 }
+#mobileBottomNav {
+    display: none;
+}
+@media (max-width: 1279px) {
+    #mainContent {
+        padding-bottom: 5rem;
+    }
+    #mobileBottomNav {
+        display: flex;
+    }
+}
 @media (min-width: 1280px) {
     #sidebar {
         position: fixed;
@@ -132,13 +143,33 @@ body[data-theme="blue"] {
 }
 body[data-theme="classic"] {
     --page-bg: #f8fafc;
-    --panel-bg: rgba(248, 250, 252, 0.92);
+    --panel-bg: rgba(255, 255, 255, 0.95);
     --panel-border: rgba(148, 163, 184, 0.9);
     --text-primary: #0f172a;
     --text-muted: #475569;
-    --board-light: #f5f5dc;
-    --board-dark: #b58863;
-    --selected: #2563eb;
+    --board-light: #fbf6e9;
+    --board-dark: #907048;
+    --selected: #1d4ed8;
+    --button-bg: #1d4ed8;
+    --button-hover: #2563eb;
+    --danger-bg: #b91c1c;
+    --danger-hover: #dc2626;
+}
+body[data-theme="classic"] .bg-gray-800 {
+    background: rgba(148, 163, 184, 0.14) !important;
+}
+body[data-theme="classic"] .bg-gray-950 {
+    background: rgba(148, 163, 184, 0.16) !important;
+}
+body[data-theme="classic"] .text-gray-200,
+body[data-theme="classic"] .text-white {
+    color: #0f172a !important;
+}
+body[data-theme="classic"] .text-gray-400 {
+    color: #475569 !important;
+}
+body[data-theme="classic"] .border-gray-700 {
+    border-color: rgba(148, 163, 184, 0.5) !important;
 }
 .square { display:flex; justify-content:center; align-items:center; font-size:2.5rem; cursor:pointer; }
 .light { background: var(--board-light); }
@@ -221,7 +252,7 @@ body[data-theme="classic"] {
     <div class="mb-6 text-left bg-gray-800 p-4 rounded shadow">
         <label class="block mb-2 font-bold">Bot Difficulty: <span id="diffDisplay">100</span></label>
         <input type="range" id="diffInput" min="1" max="100" value="100" class="w-full cursor-pointer" oninput="updateDifficultyInfo(this.value)">
-        <p class="block text-xs text-gray-400 mt-2" id="difficultyInfo">100 allows the bot maximum calculation time and depth.</p>
+        <p class="block text-xs text-gray-400 mt-2" id="difficultyInfo">Move the slider to adjust bot strength and see the message update live.</p>
     </div>
 
     <button id="newGameButton" onclick="if(matchActive){exitMatch()} else {startGame()}" class="bg-blue-600 hover:bg-blue-500 transition px-4 py-3 rounded w-full mb-3 font-bold shadow flex items-center justify-center gap-2">
@@ -234,7 +265,7 @@ body[data-theme="classic"] {
     </button>
 </div>
 
-<div id="stats" class="hidden text-center mt-20 w-full max-w-sm"></div>
+<div id="stats" class="hidden mt-20 w-full max-w-7xl mx-auto px-4 text-left"></div>
 
 <div id="settings" class="hidden text-left mt-20 w-full max-w-sm">
     <h1 class="text-4xl mb-6 font-bold">Settings</h1>
@@ -285,6 +316,13 @@ body[data-theme="classic"] {
     </div>
 </div>
 </div>
+
+<nav id="mobileBottomNav" class="xl:hidden fixed bottom-0 left-0 right-0 z-30 bg-slate-950/95 border-t border-slate-700 backdrop-blur px-4 py-3 flex items-center justify-between gap-2">
+    <button onclick="showHomeView()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white rounded-xl px-3 py-2 text-xs font-semibold">Home</button>
+    <button onclick="showStats()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white rounded-xl px-3 py-2 text-xs font-semibold">Stats</button>
+    <button onclick="showSettings()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white rounded-xl px-3 py-2 text-xs font-semibold">Theme</button>
+    <button onclick="contactHub()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white rounded-xl px-3 py-2 text-xs font-semibold">Contact</button>
+</nav>
 
 <script>
 // DOM Elements
@@ -492,21 +530,93 @@ function saveStats(s){ localStorage.setItem("stats", JSON.stringify(s)); }
 function showStats(){
     showStatsView();
     let s = getStats();
+    let winRate = s.games ? ((s.wins / s.games) * 100).toFixed(0) : 0;
+    let winRatio = s.games ? Math.round((s.wins / s.games) * 100) : 0;
+    let lossRatio = s.games ? Math.round((s.losses / s.games) * 100) : 0;
     statsEl.innerHTML = `
-    <h1 class="text-4xl mb-6 font-bold">Dashboard</h1>
-    <div class="grid grid-cols-2 gap-4 text-lg">
-        <div class="bg-gray-800 p-4 rounded shadow">Games: ${s.games}</div>
-        <div class="bg-gray-800 p-4 rounded shadow text-green-400">Wins: ${s.wins}</div>
-        <div class="bg-gray-800 p-4 rounded shadow text-red-400">Losses: ${s.losses}</div>
-        <div class="bg-gray-800 p-4 rounded shadow text-yellow-400">Draws: ${s.draws}</div>
-        <div class="bg-gray-800 p-4 rounded shadow col-span-2 font-bold">
-            Win Rate: ${s.games ? ((s.wins/s.games)*100).toFixed(1) : 0}%
+    <div class="space-y-8">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <h1 class="text-5xl font-bold">Statistics</h1>
+                <p class="mt-2 text-sm text-gray-400 max-w-xl">Track your wins, losses, and practice progress with a clean overview. More insights are coming soon.</p>
+            </div>
+            <button onclick="contactHub()" class="inline-flex items-center justify-center rounded-3xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-500 transition">Contact hub</button>
         </div>
-        <div class="bg-gray-800 p-4 rounded shadow col-span-2 font-bold text-blue-400">
-            Highest Diff Beaten: ${s.best}
+
+        <div class="grid gap-8 xl:grid-cols-[1.6fr_0.9fr] xl:items-start xl:justify-items-end">
+            <div class="rounded-[2rem] border border-slate-700 bg-slate-950/90 p-10 shadow-2xl w-full">
+                <div class="text-center">
+                    <p class="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">More statistics</p>
+                    <h2 class="mt-6 text-4xl font-bold text-white">Coming soon</h2>
+                    <p class="mt-4 text-sm text-slate-400 max-w-xl mx-auto">This space will show deeper performance charts, opening trends, and post-game analysis once it is ready.</p>
+                </div>
+
+                <div class="mt-12 grid gap-4 sm:grid-cols-2">
+                    <div class="rounded-3xl border border-slate-700 bg-slate-900/90 p-5 text-center">
+                        <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Games played</p>
+                        <p class="mt-4 text-4xl font-bold text-white">${s.games}</p>
+                    </div>
+                    <div class="rounded-3xl border border-slate-700 bg-slate-900/90 p-5 text-center">
+                        <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Highest bot difficulty beaten</p>
+                        <p class="mt-4 text-4xl font-bold text-blue-400">${s.best}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rounded-[2rem] border border-slate-700 bg-slate-950/90 p-10 shadow-2xl max-w-[28rem] w-full">
+                <div class="mb-6">
+                    <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Games</p>
+                </div>
+                <div class="grid gap-4 mb-10">
+                    <div class="rounded-3xl border border-slate-700 bg-slate-900/90 p-5">
+                        <p class="text-sm uppercase tracking-[0.22em] text-slate-400">Games played</p>
+                        <p class="mt-4 text-4xl font-bold text-white">${s.games}</p>
+                    </div>
+                    <div class="rounded-3xl border border-slate-700 bg-slate-900/90 p-5">
+                        <p class="text-sm uppercase tracking-[0.22em] text-slate-400">Highest bot difficulty beaten</p>
+                        <p class="mt-4 text-4xl font-bold text-blue-400">${s.best}</p>
+                    </div>
+                </div>
+
+                <div class="mb-10 text-sm uppercase tracking-[0.24em] text-slate-400">Win to lose ratio</div>
+                <div class="flex items-center justify-between gap-4 mb-8">
+                    <div>
+                        <p class="text-sm text-slate-400">Overall win rate</p>
+                        <p class="mt-3 text-4xl font-bold text-white">${winRate}%</p>
+                    </div>
+                    <div class="flex h-20 w-20 items-center justify-center rounded-full bg-slate-900/80">
+                        <span class="text-lg font-bold text-white">${winRatio}%</span>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="rounded-3xl bg-slate-900/90 p-4">
+                        <div class="mb-2 flex items-center justify-between text-sm text-slate-400">
+                            <span>Wins</span>
+                            <span>${s.wins}</span>
+                        </div>
+                        <div class="h-3 overflow-hidden rounded-full bg-slate-800">
+                            <div class="h-full rounded-full bg-emerald-500" style="width: ${winRatio}%;"></div>
+                        </div>
+                    </div>
+                    <div class="rounded-3xl bg-slate-900/90 p-4">
+                        <div class="mb-2 flex items-center justify-between text-sm text-slate-400">
+                            <span>Losses</span>
+                            <span>${s.losses}</span>
+                        </div>
+                        <div class="h-3 overflow-hidden rounded-full bg-slate-800">
+                            <div class="h-full rounded-full bg-red-500" style="width: ${lossRatio}%;"></div>
+                        </div>
+                    </div>
+                    <div class="rounded-3xl bg-slate-900/90 p-4 text-center">
+                        <p class="text-sm uppercase tracking-[0.22em] text-slate-400">Draws</p>
+                        <p class="mt-3 text-3xl font-bold text-slate-100">${s.draws}</p>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <button onclick="showHomeView()" class="mx-auto mt-6 inline-flex rounded-3xl bg-gray-700 px-6 py-3 text-sm font-semibold text-white hover:bg-gray-600 transition">Back to Menu</button>
     </div>
-    <button onclick="showHomeView()" class="mt-6 bg-gray-700 hover:bg-gray-600 transition px-6 py-3 rounded font-bold w-full">Back to Menu</button>
     `;
 }
 

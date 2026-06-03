@@ -12,8 +12,10 @@ King's gambit is a chess platform that let's you get straight to the playing.
 * 📊 **Stats** See your stats in the professional looking way.
 
 ## What's new in King's Gambit 2.1?
+* 📊 **Improved stats** page shows a 'dashboard' view. Same stats, better view. *Latest addition*
+* 💬 **Contact hub** let's you contact us for a Feature request or Bug fix.
 * 🗃️ **Fixed Sidebar** page handling is better and easier. Going to the 'Stats' page from the sidebar will actually open it.
-* ♟️ **Bigger board** see 
+* ♟️ **Bigger board** see the moves, quicker
 * ❌ **Resign button** leave the game quickly.
 * 🛞 **Recent moves** see what happened, what you and the bot played.
 
