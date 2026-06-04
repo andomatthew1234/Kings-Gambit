@@ -296,11 +296,11 @@ button, input {
                         <div class="grid gap-4 sm:grid-cols-2">
                             <div class="rounded-3xl border border-slate-700 bg-slate-900/90 p-5">
                                 <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Difficulty</p>
-                                <p class="mt-3 text-3xl font-bold">Easy</p>
+                                <p class="mt-3 text-3xl font-bold">Easy → Hard</p>
                             </div>
                             <div class="rounded-3xl border border-slate-700 bg-slate-900/90 p-5">
                                 <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Mode</p>
-                                <p class="mt-3 text-3xl font-bold">Single move</p>
+                                <p class="mt-3 text-3xl font-bold">Single & multi-move</p>
                             </div>
                         </div>
                     </div>
@@ -435,9 +435,10 @@ function getProgress(id){
 function filterPuzzles(){
     const searchValue = currentSearch.trim().toLowerCase();
     return puzzles.filter(p => {
-        if(currentFilter === 'easy' && p.level > 33) return false;
-        if(currentFilter === 'medium' && (p.level < 34 || p.level > 66)) return false;
-        if(currentFilter === 'hard' && p.level < 67) return false;
+        const tier = (p.difficulty || '').toLowerCase();
+        if(currentFilter === 'easy' && tier !== 'easy') return false;
+        if(currentFilter === 'medium' && tier !== 'medium') return false;
+        if(currentFilter === 'hard' && tier !== 'hard') return false;
 
         if(!searchValue) return true;
         return [p.id, p.id?.replace(/^puzzle-/, ''), p.title, p.description, p.difficulty, p.motif, String(p.level)]
