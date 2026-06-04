@@ -260,6 +260,8 @@ let validMoves = [];
 let wrongAttempts = 0;
 let solved = false;
 let solutionRevealed = false;
+let solveIndex = 0;   // index of the next expected move in the solution line
+let busy = false;     // true while the opponent's auto-reply is being played
 const game = new Chess();
 let puzzleProgress = {};
 
@@ -325,7 +327,9 @@ function loadRequestedPuzzle(){
     game.load(activePuzzle.fen);
     renderBoard();
     updatePuzzleDetails();
-    setMessage('Select the best move for this puzzle.', 'info');
+    setMessage(isMultiMove()
+        ? 'Multi-move puzzle. Play the full winning line — the opponent replies after each correct move.'
+        : 'Select the best move for this puzzle.', 'info');
     setSidebarStatus('Puzzle loaded. Use the board to test the best move.');
 }
 
@@ -335,6 +339,16 @@ function resetPuzzleState(){
     wrongAttempts = 0;
     solved = false;
     solutionRevealed = false;
+    solveIndex = 0;
+    busy = false;
+}
+
+function isMultiMove(){
+    return activePuzzle && Array.isArray(activePuzzle.solution) && activePuzzle.solution.length > 1;
+}
+
+function uciToMoveObj(uci){
+    return { from: uci.slice(0, 2), to: uci.slice(2, 4), promotion: uci.length > 4 ? uci[4] : 'q' };
 }
 
 function resetPuzzle(){
@@ -387,9 +401,13 @@ function getProgress(id){
 function getSolutionSAN(){
     if(!activePuzzle) return '';
     const temp = new Chess(activePuzzle.fen);
-    const sol = activePuzzle.solution[0];
-    const move = temp.move({ from: sol.slice(0, 2), to: sol.slice(2, 4), promotion: 'q' });
-    return move ? move.san : sol;
+    const sans = [];
+    for(const uci of activePuzzle.solution){
+        const move = temp.move(uciToMoveObj(uci));
+        if(!move){ sans.push(uci); break; }
+        sans.push(move.san);
+    }
+    return sans.join(' ');
 }
 
 function getSolutionText(){
@@ -405,16 +423,47 @@ function revealSolution(){
         markProgressResult(activePuzzle.id, 'failed');
     }
     solutionRevealed = true;
-    const sol = activePuzzle.solution[0];
+    busy = false;
+    selectedSquare = null;
+    validMoves = [];
     game.load(activePuzzle.fen);
-    game.move({ from: sol.slice(0, 2), to: sol.slice(2, 4), promotion: 'q' });
+    for(const uci of activePuzzle.solution){
+        if(!game.move(uciToMoveObj(uci))) break;
+    }
     renderBoard();
     updatePuzzleDetails();
-    setMessage('Solution revealed. Review the correct move.', 'error');
+    setMessage(isMultiMove() ? 'Solution revealed. Review the full winning line.' : 'Solution revealed. Review the correct move.', 'error');
+}
+
+function playOpponentReply(){
+    // Auto-play the opponent's forced reply (odd index in the solution line).
+    const reply = activePuzzle.solution[solveIndex];
+    if(!reply){ busy = false; return; }
+    game.move(uciToMoveObj(reply));
+    solveIndex += 1;
+    busy = false;
+    renderBoard();
+    const remaining = activePuzzle.solution.length - solveIndex;
+    setMessage(`Good move! The opponent replied. ${remaining > 1 ? 'Find the next move.' : 'One more move to finish.'}`, 'info');
+    setSidebarStatus('Keep the combination going — find the next best move.');
+}
+
+function completePuzzle(){
+    solved = true;
+    solutionRevealed = true;
+    selectedSquare = null;
+    validMoves = [];
+    setMessage('Nice work! You found the full winning line.', 'success');
+    if(puzzleGamificationEnabled()){
+        loadProgress();
+        markProgressResult(activePuzzle.id, 'completed');
+    }
+    updatePuzzleDetails();
+    renderBoard();
 }
 
 function clickSquare(square){
-    if(!activePuzzle || solved || solutionRevealed) return;
+    if(!activePuzzle || solved || solutionRevealed || busy) return;
     const piece = game.get(square);
     if(selectedSquare){
         if(selectedSquare === square){
@@ -423,26 +472,34 @@ function clickSquare(square){
             renderBoard();
             return;
         }
-        const move = game.moves({ square: selectedSquare, verbose: true }).find(m => m.to === square);
-        if(!move){
+        const candidates = game.moves({ square: selectedSquare, verbose: true }).filter(m => m.to === square);
+        if(candidates.length === 0){
             selectedSquare = null;
             validMoves = [];
             renderBoard();
             return;
         }
-        const attempted = move.from + move.to;
-        if(activePuzzle.solution.includes(attempted)){
+        const expected = activePuzzle.solution[solveIndex];
+        // pick the move that matches the expected solution move (handles promotions)
+        let move = candidates[0];
+        const match = candidates.find(m => (m.from + m.to + (m.promotion || '')) === expected || (m.from + m.to) === expected);
+        if(match) move = match;
+        const attempted = move.from + move.to + (move.promotion || '');
+        const isCorrect = expected && (attempted === expected || (move.from + move.to) === expected);
+        if(isCorrect){
             game.move(move);
-            solved = true;
-            solutionRevealed = true;
-            setMessage('Nice work! You found the correct move.', 'success');
-            // mark completed and save progress if gamification is enabled
-            if(puzzleGamificationEnabled()){
-                loadProgress();
-                markProgressResult(activePuzzle.id, 'completed');
-            }
-            updatePuzzleDetails();
+            solveIndex += 1;
+            selectedSquare = null;
+            validMoves = [];
             renderBoard();
+            if(solveIndex >= activePuzzle.solution.length){
+                completePuzzle();
+                return;
+            }
+            // there is still a forced opponent reply, then it's the solver's turn again
+            setMessage('Correct! Watch the opponent\u2019s reply...', 'success');
+            busy = true;
+            setTimeout(playOpponentReply, 550);
             return;
         }
         wrongAttempts += 1;

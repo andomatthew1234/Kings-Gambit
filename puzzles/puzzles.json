@@ -8,7 +8,7 @@
       "solution": [
         "d5c7"
       ],
-      "difficulty": "Level 1",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 1
     },
@@ -20,7 +20,7 @@
       "solution": [
         "c5d6"
       ],
-      "difficulty": "Level 2",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 2
     },
@@ -32,7 +32,7 @@
       "solution": [
         "f1h3"
       ],
-      "difficulty": "Level 3",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 3
     },
@@ -44,7 +44,7 @@
       "solution": [
         "a4d7"
       ],
-      "difficulty": "Level 4",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 4
     },
@@ -56,7 +56,7 @@
       "solution": [
         "h1h2"
       ],
-      "difficulty": "Level 5",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 5
     },
@@ -68,7 +68,7 @@
       "solution": [
         "a5d8"
       ],
-      "difficulty": "Level 6",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 6
     },
@@ -80,7 +80,7 @@
       "solution": [
         "c1b2"
       ],
-      "difficulty": "Level 7",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 7
     },
@@ -92,7 +92,7 @@
       "solution": [
         "e2d3"
       ],
-      "difficulty": "Level 8",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 8
     },
@@ -104,7 +104,7 @@
       "solution": [
         "g1h3"
       ],
-      "difficulty": "Level 9",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 9
     },
@@ -116,7 +116,7 @@
       "solution": [
         "c4d5"
       ],
-      "difficulty": "Level 10",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 10
     },
@@ -128,7 +128,7 @@
       "solution": [
         "f6d8"
       ],
-      "difficulty": "Level 11",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 11
     },
@@ -140,7 +140,7 @@
       "solution": [
         "f3h4"
       ],
-      "difficulty": "Level 12",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 12
     },
@@ -152,7 +152,7 @@
       "solution": [
         "a4c6"
       ],
-      "difficulty": "Level 13",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 13
     },
@@ -164,7 +164,7 @@
       "solution": [
         "d5f6"
       ],
-      "difficulty": "Level 14",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 14
     },
@@ -176,7 +176,7 @@
       "solution": [
         "g3h4"
       ],
-      "difficulty": "Level 15",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 15
     },
@@ -188,7 +188,7 @@
       "solution": [
         "b3c5"
       ],
-      "difficulty": "Level 16",
+      "difficulty": "Easy",
       "motif": "Mate in one",
       "level": 16
     },
@@ -200,7 +200,7 @@
       "solution": [
         "e2e4"
       ],
-      "difficulty": "Level 17",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 17
     },
@@ -212,7 +212,7 @@
       "solution": [
         "d3d5"
       ],
-      "difficulty": "Level 18",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 18
     },
@@ -224,7 +224,7 @@
       "solution": [
         "e2d3"
       ],
-      "difficulty": "Level 19",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 19
     },
@@ -236,7 +236,7 @@
       "solution": [
         "d2a5"
       ],
-      "difficulty": "Level 20",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 20
     },
@@ -248,7 +248,7 @@
       "solution": [
         "c1b2"
       ],
-      "difficulty": "Level 21",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 21
     },
@@ -260,7 +260,7 @@
       "solution": [
         "f2g3"
       ],
-      "difficulty": "Level 22",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 22
     },
@@ -272,7 +272,7 @@
       "solution": [
         "g2f3"
       ],
-      "difficulty": "Level 23",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 23
     },
@@ -284,7 +284,7 @@
       "solution": [
         "a5d8"
       ],
-      "difficulty": "Level 24",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 24
     },
@@ -296,7 +296,7 @@
       "solution": [
         "c3d4"
       ],
-      "difficulty": "Level 25",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 25
     },
@@ -308,7 +308,7 @@
       "solution": [
         "c4b5"
       ],
-      "difficulty": "Level 26",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 26
     },
@@ -320,7 +320,7 @@
       "solution": [
         "h4e7"
       ],
-      "difficulty": "Level 27",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 27
     },
@@ -332,7 +332,7 @@
       "solution": [
         "c3b1"
       ],
-      "difficulty": "Level 28",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 28
     },
@@ -344,7 +344,7 @@
       "solution": [
         "d1b3"
       ],
-      "difficulty": "Level 29",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 29
     },
@@ -356,7 +356,7 @@
       "solution": [
         "f7d8"
       ],
-      "difficulty": "Level 30",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 30
     },
@@ -368,7 +368,7 @@
       "solution": [
         "g1h1"
       ],
-      "difficulty": "Level 31",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 31
     },
@@ -380,7 +380,7 @@
       "solution": [
         "f2e3"
       ],
-      "difficulty": "Level 32",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 32
     },
@@ -392,7 +392,7 @@
       "solution": [
         "h1h6"
       ],
-      "difficulty": "Level 33",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 33
     },
@@ -404,7 +404,7 @@
       "solution": [
         "a4c5"
       ],
-      "difficulty": "Level 34",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 34
     },
@@ -416,7 +416,7 @@
       "solution": [
         "g3f4"
       ],
-      "difficulty": "Level 35",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 35
     },
@@ -428,7 +428,7 @@
       "solution": [
         "h1h6"
       ],
-      "difficulty": "Level 36",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 36
     },
@@ -440,7 +440,7 @@
       "solution": [
         "a3d3"
       ],
-      "difficulty": "Level 37",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 37
     },
@@ -452,7 +452,7 @@
       "solution": [
         "g7e7"
       ],
-      "difficulty": "Level 38",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 38
     },
@@ -464,7 +464,7 @@
       "solution": [
         "c2b3"
       ],
-      "difficulty": "Level 39",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 39
     },
@@ -476,7 +476,7 @@
       "solution": [
         "f3h4"
       ],
-      "difficulty": "Level 40",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 40
     },
@@ -488,7 +488,7 @@
       "solution": [
         "b4a5"
       ],
-      "difficulty": "Level 41",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 41
     },
@@ -500,7 +500,7 @@
       "solution": [
         "b2a3"
       ],
-      "difficulty": "Level 42",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 42
     },
@@ -512,7 +512,7 @@
       "solution": [
         "c1g5"
       ],
-      "difficulty": "Level 43",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 43
     },
@@ -524,7 +524,7 @@
       "solution": [
         "g1g3"
       ],
-      "difficulty": "Level 44",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 44
     },
@@ -536,7 +536,7 @@
       "solution": [
         "f3h5"
       ],
-      "difficulty": "Level 45",
+      "difficulty": "Easy",
       "motif": "Mate in one",
       "level": 45
     },
@@ -548,7 +548,7 @@
       "solution": [
         "a5b6"
       ],
-      "difficulty": "Level 46",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 46
     },
@@ -560,7 +560,7 @@
       "solution": [
         "b3a4"
       ],
-      "difficulty": "Level 47",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 47
     },
@@ -572,7 +572,7 @@
       "solution": [
         "f3g5"
       ],
-      "difficulty": "Level 48",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 48
     },
@@ -584,7 +584,7 @@
       "solution": [
         "g3h4"
       ],
-      "difficulty": "Level 49",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 49
     },
@@ -596,7 +596,7 @@
       "solution": [
         "f6e7"
       ],
-      "difficulty": "Level 50",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 50
     },
@@ -608,7 +608,7 @@
       "solution": [
         "f4e5"
       ],
-      "difficulty": "Level 51",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 51
     },
@@ -620,7 +620,7 @@
       "solution": [
         "e6d8"
       ],
-      "difficulty": "Level 52",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 52
     },
@@ -632,7 +632,7 @@
       "solution": [
         "f5e6"
       ],
-      "difficulty": "Level 53",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 53
     },
@@ -644,7 +644,7 @@
       "solution": [
         "e5f6"
       ],
-      "difficulty": "Level 54",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 54
     },
@@ -656,7 +656,7 @@
       "solution": [
         "h1h4"
       ],
-      "difficulty": "Level 55",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 55
     },
@@ -668,7 +668,7 @@
       "solution": [
         "d5e6"
       ],
-      "difficulty": "Level 56",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 56
     },
@@ -680,7 +680,7 @@
       "solution": [
         "c6d8"
       ],
-      "difficulty": "Level 57",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 57
     },
@@ -692,7 +692,7 @@
       "solution": [
         "f4d6"
       ],
-      "difficulty": "Level 58",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 58
     },
@@ -704,7 +704,7 @@
       "solution": [
         "c1g5"
       ],
-      "difficulty": "Level 59",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 59
     },
@@ -716,7 +716,7 @@
       "solution": [
         "e5f6"
       ],
-      "difficulty": "Level 60",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 60
     },
@@ -728,7 +728,7 @@
       "solution": [
         "e5c7"
       ],
-      "difficulty": "Level 61",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 61
     },
@@ -740,7 +740,7 @@
       "solution": [
         "g4h5"
       ],
-      "difficulty": "Level 62",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 62
     },
@@ -752,7 +752,7 @@
       "solution": [
         "b5a6"
       ],
-      "difficulty": "Level 63",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 63
     },
@@ -764,7 +764,7 @@
       "solution": [
         "d5f6"
       ],
-      "difficulty": "Level 64",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 64
     },
@@ -776,7 +776,7 @@
       "solution": [
         "g4f5"
       ],
-      "difficulty": "Level 65",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 65
     },
@@ -788,7 +788,7 @@
       "solution": [
         "d3f5"
       ],
-      "difficulty": "Level 66",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 66
     },
@@ -800,7 +800,7 @@
       "solution": [
         "h1h2"
       ],
-      "difficulty": "Level 67",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 67
     },
@@ -812,7 +812,7 @@
       "solution": [
         "g2h3"
       ],
-      "difficulty": "Level 68",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 68
     },
@@ -824,7 +824,7 @@
       "solution": [
         "g7f6"
       ],
-      "difficulty": "Level 69",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 69
     },
@@ -836,7 +836,7 @@
       "solution": [
         "c3b4"
       ],
-      "difficulty": "Level 70",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 70
     },
@@ -848,7 +848,7 @@
       "solution": [
         "d3d7"
       ],
-      "difficulty": "Level 71",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 71
     },
@@ -860,7 +860,7 @@
       "solution": [
         "h8f6"
       ],
-      "difficulty": "Level 72",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 72
     },
@@ -872,7 +872,7 @@
       "solution": [
         "d3g6"
       ],
-      "difficulty": "Level 73",
+      "difficulty": "Easy",
       "motif": "Mate in one",
       "level": 73
     },
@@ -884,7 +884,7 @@
       "solution": [
         "g2d5"
       ],
-      "difficulty": "Level 74",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 74
     },
@@ -896,7 +896,7 @@
       "solution": [
         "d2e3"
       ],
-      "difficulty": "Level 75",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 75
     },
@@ -908,7 +908,7 @@
       "solution": [
         "d5e4"
       ],
-      "difficulty": "Level 76",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 76
     },
@@ -920,7 +920,7 @@
       "solution": [
         "g5d8"
       ],
-      "difficulty": "Level 77",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 77
     },
@@ -932,7 +932,7 @@
       "solution": [
         "b7d8"
       ],
-      "difficulty": "Level 78",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 78
     },
@@ -944,7 +944,7 @@
       "solution": [
         "a5b6"
       ],
-      "difficulty": "Level 79",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 79
     },
@@ -956,7 +956,7 @@
       "solution": [
         "a1a2"
       ],
-      "difficulty": "Level 80",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 80
     },
@@ -968,7 +968,7 @@
       "solution": [
         "c1g5"
       ],
-      "difficulty": "Level 81",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 81
     },
@@ -980,7 +980,7 @@
       "solution": [
         "a3e7"
       ],
-      "difficulty": "Level 82",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 82
     },
@@ -992,7 +992,7 @@
       "solution": [
         "c2b3"
       ],
-      "difficulty": "Level 83",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 83
     },
@@ -1004,7 +1004,7 @@
       "solution": [
         "h4e7"
       ],
-      "difficulty": "Level 84",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 84
     },
@@ -1016,7 +1016,7 @@
       "solution": [
         "c3b4"
       ],
-      "difficulty": "Level 85",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 85
     },
@@ -1028,7 +1028,7 @@
       "solution": [
         "c6d7"
       ],
-      "difficulty": "Level 86",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 86
     },
@@ -1040,7 +1040,7 @@
       "solution": [
         "c3b4"
       ],
-      "difficulty": "Level 87",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 87
     },
@@ -1052,7 +1052,7 @@
       "solution": [
         "e5d6"
       ],
-      "difficulty": "Level 88",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 88
     },
@@ -1064,7 +1064,7 @@
       "solution": [
         "g6e7"
       ],
-      "difficulty": "Level 89",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 89
     },
@@ -1076,7 +1076,7 @@
       "solution": [
         "g6e8"
       ],
-      "difficulty": "Level 90",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 90
     },
@@ -1088,7 +1088,7 @@
       "solution": [
         "f5e7"
       ],
-      "difficulty": "Level 91",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 91
     },
@@ -1100,7 +1100,7 @@
       "solution": [
         "c1g5"
       ],
-      "difficulty": "Level 92",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 92
     },
@@ -1112,7 +1112,7 @@
       "solution": [
         "h4g6"
       ],
-      "difficulty": "Level 93",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 93
     },
@@ -1124,7 +1124,7 @@
       "solution": [
         "f7d8"
       ],
-      "difficulty": "Level 94",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 94
     },
@@ -1136,7 +1136,7 @@
       "solution": [
         "e5c7"
       ],
-      "difficulty": "Level 95",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 95
     },
@@ -1148,7 +1148,7 @@
       "solution": [
         "a2a5"
       ],
-      "difficulty": "Level 96",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 96
     },
@@ -1160,7 +1160,7 @@
       "solution": [
         "h1h4"
       ],
-      "difficulty": "Level 97",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 97
     },
@@ -1172,7 +1172,7 @@
       "solution": [
         "h3h4"
       ],
-      "difficulty": "Level 98",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 98
     },
@@ -1184,7 +1184,7 @@
       "solution": [
         "d6f6"
       ],
-      "difficulty": "Level 99",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 99
     },
@@ -1196,9 +1196,509 @@
       "solution": [
         "d3e4"
       ],
-      "difficulty": "Level 100",
+      "difficulty": "Easy",
       "motif": "Queen capture",
       "level": 100
+    },
+    {
+      "id": "puzzle-101",
+      "title": "Medium 1: Endgame technique",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "r3k2r/3p1pp1/pN2p2p/4P1q1/1p3Q2/8/PPP3PP/2KR4 w kq - 1 20",
+      "solution": [
+        "f4g5",
+        "h6g5",
+        "b6a8"
+      ],
+      "difficulty": "Medium",
+      "motif": "Endgame technique",
+      "level": 101
+    },
+    {
+      "id": "puzzle-102",
+      "title": "Medium 2: Mate in 2",
+      "description": "White to move and force checkmate. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "6k1/6p1/2N1p2P/3p4/p6P/Qr1b4/1P1q1P2/K5R1 w - - 8 36",
+      "solution": [
+        "g1g7",
+        "g8h8",
+        "a3f8"
+      ],
+      "difficulty": "Medium",
+      "motif": "Mate in 2",
+      "level": 102
+    },
+    {
+      "id": "puzzle-103",
+      "title": "Medium 3: Pin",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "2kr3r/pppq4/1b3p1p/3P2p1/4P2P/2N2PQ1/PPPK4/3R1B2 w - - 0 23",
+      "solution": [
+        "f1h3",
+        "d7h3",
+        "g3h3"
+      ],
+      "difficulty": "Medium",
+      "motif": "Pin",
+      "level": 103
+    },
+    {
+      "id": "puzzle-104",
+      "title": "Medium 4: Middlegame tactics",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "r4rk1/ppp2ppp/8/3nnb2/8/1B6/PP4PP/R1BR3K w - - 0 15",
+      "solution": [
+        "d1d5",
+        "a8e8",
+        "c1f4"
+      ],
+      "difficulty": "Medium",
+      "motif": "Middlegame tactics",
+      "level": 104
+    },
+    {
+      "id": "puzzle-105",
+      "title": "Medium 5: Promotion",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "8/1P6/4kp2/3N2pp/8/5P2/4K2b/8 w - - 1 47",
+      "solution": [
+        "f3f4",
+        "e6d5",
+        "b7b8q"
+      ],
+      "difficulty": "Medium",
+      "motif": "Promotion",
+      "level": 105
+    },
+    {
+      "id": "puzzle-106",
+      "title": "Medium 6: Fork",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "3r2k1/5R1p/p5p1/1bN5/2pr4/8/P5PP/5RK1 w - - 1 26",
+      "solution": [
+        "c5e6",
+        "d4d1",
+        "e6d8"
+      ],
+      "difficulty": "Medium",
+      "motif": "Fork",
+      "level": 106
+    },
+    {
+      "id": "puzzle-107",
+      "title": "Medium 7: Mate in 2",
+      "description": "White to move and force checkmate. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "2rq3k/5Qp1/p3p2b/1p1nN3/8/2P4R/PP3P1P/6K1 w - - 2 28",
+      "solution": [
+        "h3h6",
+        "g7h6",
+        "e5g6"
+      ],
+      "difficulty": "Medium",
+      "motif": "Mate in 2",
+      "level": 107
+    },
+    {
+      "id": "puzzle-108",
+      "title": "Medium 8: Middlegame tactics",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "r5nr/pp1bkppp/3Np3/3pn3/8/3BBN2/PP3PPP/4R1K1 w - - 0 15",
+      "solution": [
+        "f3e5",
+        "e7d6",
+        "e5f7"
+      ],
+      "difficulty": "Medium",
+      "motif": "Middlegame tactics",
+      "level": 108
+    },
+    {
+      "id": "puzzle-109",
+      "title": "Medium 9: Precise defense",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "rnb1kbnr/pppp1p2/4p3/8/3N2p1/3BP1q1/PPPP3P/RNBQK2R w KQkq - 0 8",
+      "solution": [
+        "h2g3",
+        "h8h1",
+        "d3f1"
+      ],
+      "difficulty": "Medium",
+      "motif": "Precise defense",
+      "level": 109
+    },
+    {
+      "id": "puzzle-110",
+      "title": "Medium 10: Skewer",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "4r1k1/pp3r2/2p5/7R/8/7R/PP6/6K1 w - - 1 35",
+      "solution": [
+        "h5h8",
+        "g8g7",
+        "h8e8"
+      ],
+      "difficulty": "Medium",
+      "motif": "Skewer",
+      "level": 110
+    },
+    {
+      "id": "puzzle-111",
+      "title": "Medium 11: Pawn endgame",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "8/5p2/6pp/2k1p2P/1p2P1P1/1P1K4/5P2/8 w - - 0 38",
+      "solution": [
+        "g4g5",
+        "h6g5",
+        "h5h6"
+      ],
+      "difficulty": "Medium",
+      "motif": "Pawn endgame",
+      "level": 111
+    },
+    {
+      "id": "puzzle-112",
+      "title": "Medium 12: Pin",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "6kr/1pp3q1/3p2p1/p3p2p/4P1Q1/2PP4/PPK5/5R2 w - - 0 32",
+      "solution": [
+        "g4e6",
+        "g8h7",
+        "f1f7"
+      ],
+      "difficulty": "Medium",
+      "motif": "Pin",
+      "level": 112
+    },
+    {
+      "id": "puzzle-113",
+      "title": "Medium 13: Mate in 2",
+      "description": "White to move and force checkmate. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "5k2/5p1p/4pQp1/1pN1P3/1P3P2/5qP1/6bP/4K3 w - - 7 39",
+      "solution": [
+        "c5e6",
+        "f8g8",
+        "f6d8"
+      ],
+      "difficulty": "Medium",
+      "motif": "Mate in 2",
+      "level": 113
+    },
+    {
+      "id": "puzzle-114",
+      "title": "Medium 14: Double check",
+      "description": "White to move and force checkmate. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "3k1b1r/r3p1pp/ppB2n2/4q3/1P1N4/P4b2/2P2PPP/1N1R2K1 w - - 0 19",
+      "solution": [
+        "d4e6",
+        "d8c8",
+        "d1d8"
+      ],
+      "difficulty": "Medium",
+      "motif": "Double check",
+      "level": 114
+    },
+    {
+      "id": "puzzle-115",
+      "title": "Medium 15: Knight endgame",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "8/8/7p/5P2/6n1/3N1K1k/8/8 w - - 0 56",
+      "solution": [
+        "d3f2",
+        "h3h4",
+        "f2g4"
+      ],
+      "difficulty": "Medium",
+      "motif": "Knight endgame",
+      "level": 115
+    },
+    {
+      "id": "puzzle-116",
+      "title": "Medium 16: Pin",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "2k1r3/p4p2/1pqp2p1/5r2/3P3Q/4RP1p/PP6/5R1K w - - 5 33",
+      "solution": [
+        "e3c3",
+        "c6c3",
+        "b2c3"
+      ],
+      "difficulty": "Medium",
+      "motif": "Pin",
+      "level": 116
+    },
+    {
+      "id": "puzzle-117",
+      "title": "Medium 17: Endgame technique",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "r5k1/ppQ3p1/5p1p/3pN3/5q2/8/P5P1/5BK1 w - - 0 28",
+      "solution": [
+        "c7f7",
+        "g8h7",
+        "f1d3"
+      ],
+      "difficulty": "Medium",
+      "motif": "Endgame technique",
+      "level": 117
+    },
+    {
+      "id": "puzzle-118",
+      "title": "Medium 18: Middlegame tactics",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "6k1/4r1r1/pb5p/4P3/P3Q1q1/1p5N/6P1/1B1R3K w - - 2 43",
+      "solution": [
+        "e4a8",
+        "g8f7",
+        "d1f1"
+      ],
+      "difficulty": "Medium",
+      "motif": "Middlegame tactics",
+      "level": 118
+    },
+    {
+      "id": "puzzle-119",
+      "title": "Medium 19: Advanced pawn",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "3k4/7R/1r3P2/4K1p1/8/1p5P/8/8 w - - 0 44",
+      "solution": [
+        "h7h8",
+        "d8c7",
+        "f6f7"
+      ],
+      "difficulty": "Medium",
+      "motif": "Advanced pawn",
+      "level": 119
+    },
+    {
+      "id": "puzzle-120",
+      "title": "Medium 20: Fork",
+      "description": "White to move and win. Spot the tactic and convert your advantage. Find the full forced line (2 moves). The opponent replies after each correct move.",
+      "fen": "r7/p4p1k/7q/8/6Q1/6P1/3p1P1r/B4RK1 w - - 2 39",
+      "solution": [
+        "g4e4",
+        "h6g6",
+        "e4a8"
+      ],
+      "difficulty": "Medium",
+      "motif": "Fork",
+      "level": 120
+    },
+    {
+      "id": "puzzle-121",
+      "title": "Hard 1: Pin",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (6 moves). The opponent replies after each correct move.",
+      "fen": "3q1r1k/1b3p1p/p3p1pQ/1p2P3/4P1RP/1Brp2P1/P7/5RK1 w - - 0 25",
+      "solution": [
+        "g4g6",
+        "f8g8",
+        "f1f7",
+        "c3c1",
+        "h6c1",
+        "g8g6",
+        "g1h2",
+        "d3d2",
+        "c1f1",
+        "d2d1r",
+        "b3d1"
+      ],
+      "difficulty": "Hard",
+      "motif": "Pin",
+      "level": 121
+    },
+    {
+      "id": "puzzle-122",
+      "title": "Hard 2: Skewer",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (4 moves). The opponent replies after each correct move.",
+      "fen": "4rr2/pb5R/3p2p1/1qpP2N1/2p2Pk1/2Q5/PP6/2K5 w - - 0 31",
+      "solution": [
+        "g5e4",
+        "e8e4",
+        "c3h3",
+        "g4f4",
+        "h7h4",
+        "f4g5",
+        "h4e4"
+      ],
+      "difficulty": "Hard",
+      "motif": "Skewer",
+      "level": 122
+    },
+    {
+      "id": "puzzle-123",
+      "title": "Hard 3: Sacrifice",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (4 moves). The opponent replies after each correct move.",
+      "fen": "2r3k1/7p/2p3bP/2BpP1R1/1pn1p3/1N6/r7/2K4R w - - 0 35",
+      "solution": [
+        "e5e6",
+        "c8c7",
+        "h1f1",
+        "a2a8",
+        "g5f5",
+        "g6f5",
+        "f1f5"
+      ],
+      "difficulty": "Hard",
+      "motif": "Sacrifice",
+      "level": 123
+    },
+    {
+      "id": "puzzle-124",
+      "title": "Hard 4: Quiet move",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (3 moves). The opponent replies after each correct move.",
+      "fen": "8/8/p2p1B2/1p1P4/1P2P3/3K2b1/8/2k5 w - - 5 50",
+      "solution": [
+        "e4e5",
+        "d6e5",
+        "f6d8",
+        "e5e4",
+        "d3e4"
+      ],
+      "difficulty": "Hard",
+      "motif": "Quiet move",
+      "level": 124
+    },
+    {
+      "id": "puzzle-125",
+      "title": "Hard 5: Hanging piece",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (7 moves). The opponent replies after each correct move.",
+      "fen": "8/8/3r2p1/4ppKp/4k3/8/3R1P2/8 w - - 8 47",
+      "solution": [
+        "d2d6",
+        "e4f3",
+        "g5g6",
+        "f5f4",
+        "g6h5",
+        "f3f2",
+        "h5g4",
+        "f4f3",
+        "g4h3",
+        "f2e2",
+        "d6f6",
+        "e5e4",
+        "h3g3"
+      ],
+      "difficulty": "Hard",
+      "motif": "Hanging piece",
+      "level": 125
+    },
+    {
+      "id": "puzzle-126",
+      "title": "Hard 6: En passant",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (4 moves). The opponent replies after each correct move.",
+      "fen": "r1b2rk1/pp4p1/4p3/4PpNQ/1n1qp1K1/8/P5PP/R4R2 w - f6 0 21",
+      "solution": [
+        "e5f6",
+        "e4e3",
+        "g4g3",
+        "d4d6",
+        "g3h3",
+        "f8f6",
+        "h5h7"
+      ],
+      "difficulty": "Hard",
+      "motif": "En passant",
+      "level": 126
+    },
+    {
+      "id": "puzzle-127",
+      "title": "Hard 7: Fork",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (7 moves). The opponent replies after each correct move.",
+      "fen": "5k1r/1b3p1P/4pPpR/p2p2P1/1pr2q2/2P5/PP6/1K1R2Q1 w - - 0 37",
+      "solution": [
+        "h6h4",
+        "f4f5",
+        "b1a1",
+        "c4c7",
+        "h4c4",
+        "f5e5",
+        "g1b6",
+        "e5e2",
+        "b6d6",
+        "f8e8",
+        "c4d4",
+        "c7d7",
+        "d6b8"
+      ],
+      "difficulty": "Hard",
+      "motif": "Fork",
+      "level": 127
+    },
+    {
+      "id": "puzzle-128",
+      "title": "Hard 8: Clearance",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (5 moves). The opponent replies after each correct move.",
+      "fen": "2kr3r/p5bp/1p4p1/2pbppq1/8/1BP5/PPQN1PPP/3R1RK1 w - - 0 19",
+      "solution": [
+        "b3d5",
+        "d8d5",
+        "c2a4",
+        "d5d2",
+        "h2h4",
+        "g5f4",
+        "a4f4",
+        "e5f4",
+        "d1d2"
+      ],
+      "difficulty": "Hard",
+      "motif": "Clearance",
+      "level": 128
+    },
+    {
+      "id": "puzzle-129",
+      "title": "Hard 9: Double check",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (6 moves). The opponent replies after each correct move.",
+      "fen": "7r/1p4k1/p2b4/1q1Pp1pp/1r6/5Q1P/4RPP1/4R2K w - - 0 29",
+      "solution": [
+        "e2e5",
+        "b4f4",
+        "f3c3",
+        "d6e5",
+        "e1e5",
+        "f4f7",
+        "e5g5",
+        "g7h6",
+        "c3e5",
+        "b5b1",
+        "h1h2"
+      ],
+      "difficulty": "Hard",
+      "motif": "Double check",
+      "level": 129
+    },
+    {
+      "id": "puzzle-130",
+      "title": "Hard 10: Middlegame tactics",
+      "description": "White to move and win. The key move is hard to spot - look past the obvious and calculate deeply. Find the full forced line (14 moves). The opponent replies after each correct move.",
+      "fen": "1r4k1/5r2/4Qb1P/1Pp3K1/5Pp1/3P3q/1P6/R1B5 w - - 7 34",
+      "solution": [
+        "g5g6",
+        "b8f8",
+        "a1a7",
+        "h3d3",
+        "f4f5",
+        "f6e7",
+        "a7e7",
+        "d3f5",
+        "e6f5",
+        "f7f5",
+        "h6h7",
+        "g8h8",
+        "e7e6",
+        "g4g3",
+        "c1h6",
+        "f5f7",
+        "h6f8",
+        "f7f8",
+        "g6h6",
+        "c5c4",
+        "e6g6",
+        "c4c3",
+        "b2c3",
+        "g3g2",
+        "g6g2",
+        "f8f6",
+        "h6h5"
+      ],
+      "difficulty": "Hard",
+      "motif": "Middlegame tactics",
+      "level": 130
     }
   ]
 }
