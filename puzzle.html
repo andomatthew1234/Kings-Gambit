@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King's Gambit - Puzzle</title>
+<link rel="icon" type="image/png" href="resources/favicon.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+<style>
+:root {
+    --page-bg: #0f172a;
+    --panel-bg: rgba(15, 23, 42, 0.95);
+    --panel-border: rgba(71, 85, 105, 0.9);
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #2563eb;
+    --accent-soft: rgba(37, 99, 235, 0.2);
+    --board-light: #f0d9b5;
+    --board-dark: #b58863;
+}
+body[data-theme="dark"] {
+    --page-bg: #0f172a;
+    --panel-bg: rgba(15, 23, 42, 0.95);
+    --panel-border: rgba(71, 85, 105, 0.9);
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #2563eb;
+    --board-light: #f0d9b5;
+    --board-dark: #b58863;
+}
+body[data-theme="blue"] {
+    --page-bg: #0f172a;
+    --panel-bg: rgba(30, 58, 138, 0.9);
+    --panel-border: rgba(59, 130, 246, 0.8);
+    --text-primary: #e0f2fe;
+    --text-muted: #93c5fd;
+    --accent: #60a5fa;
+    --board-light: #dbeafe;
+    --board-dark: #1e40af;
+}
+body[data-theme="classic"] {
+    --page-bg: #f8fafc;
+    --panel-bg: rgba(255, 255, 255, 0.95);
+    --panel-border: rgba(148, 163, 184, 0.9);
+    --text-primary: #0f172a;
+    --text-muted: #475569;
+    --accent: #1d4ed8;
+    --board-light: #fbf6e9;
+    --board-dark: #907048;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--page-bg);
+    color: var(--text-primary);
+    font-family: Inter, system-ui, sans-serif;
+}
+button, input {
+    font: inherit;
+}
+#pageWrapper {
+    display: flex;
+    min-height: 100vh;
+}
+#sidebar {
+    width: 100%;
+    max-width: 22rem;
+    background: var(--panel-bg);
+    border-right: 1px solid var(--panel-border);
+}
+@media (max-width: 1279px) {
+    #sidebar {
+        max-width: none;
+        width: 100%;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--panel-border);
+    }
+}
+#sidebar .nav-item {
+    display:flex;
+    align-items:center;
+    gap:0.75rem;
+    width:100%;
+    border-radius:0.75rem;
+    border:1px solid rgba(75, 85, 99, 0.9);
+    background:rgba(31, 41, 55, 0.9);
+    color:#f9fafb;
+    padding:0.9rem 1rem;
+    text-align:left;
+    font-size:0.95rem;
+    font-weight:600;
+    transition: all 0.2s ease;
+}
+#sidebar .nav-item:hover {
+    border-color:rgba(96, 165, 250, 0.9);
+    background:rgba(37, 99, 235, 0.22);
+    transform: translateX(2px);
+}
+#sidebar .nav-item.active {
+    border-color:rgba(96, 165, 250, 0.95);
+    background:rgba(37, 99, 235, 0.28);
+    box-shadow:0 0 0 1px rgba(96, 165, 250, 0.35);
+}
+#mainContent {
+    flex: 1;
+    padding: 2rem 2rem 3rem;
+}
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-auto-rows: minmax(0, 1fr);
+    aspect-ratio: 1 / 1;
+    width: min(100%, 32rem);
+    max-width: 100%;
+    border-radius: 2rem;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.08);
+}
+.square {
+    position: relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+    height: 100%;
+    font-size:2.15rem;
+    cursor:pointer;
+    user-select:none;
+}
+.square.light { background: var(--board-light); }
+.square.dark { background: var(--board-dark); }
+.square.selected { outline: 4px solid rgba(37, 99, 235, 0.8); }
+.square.valid-move::after {
+    content: '';
+    width: 24%;
+    height: 24%;
+    background: rgba(37, 99, 235, 0.6);
+    border-radius: 50%;
+    position: absolute;
+}
+.status-box {
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+}
+.status-box.info { border-color: rgba(96, 165, 250, 0.4); }
+.status-box.warning { border-color: #f59e0b; }
+.status-box.error { border-color: #ef4444; }
+.status-box.success { border-color: #22c55e; }
+.status-box p { margin: 0; }
+.button-primary {
+    display: inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.5rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: white;
+    padding: 0.95rem 1.35rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+.button-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+.hidden { display: none !important; }
+@media (max-width: 767px) {
+    #mainContent { padding: 1.5rem 1rem 2rem; }
+    .board { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div id="pageWrapper">
+    <aside id="sidebar" class="p-6">
+        <div class="mb-8">
+            <p class="text-[10px] uppercase tracking-[0.28em] text-slate-400 font-bold">King's Gambit</p>
+            <h2 class="mt-2 text-3xl font-bold">Coach hub</h2>
+        </div>
+        <div class="space-y-3">
+            <button class="nav-item" onclick="window.location.href='index.html';">
+                <img src="resources/create_match.png" alt="" class="h-5 w-5 object-contain">
+                <span>New match</span>
+            </button>
+            <button class="nav-item" onclick="window.location.href='puzzles.html';">
+                <img src="resources/puzzles.png" alt="" class="h-5 w-5 object-contain">
+                <span>Puzzles</span>
+            </button>
+        </div>
+
+        <div class="mt-8 rounded-2xl border border-slate-700 bg-slate-800/90 p-4">
+            <p class="mb-2 text-[10px] uppercase tracking-[0.26em] text-slate-400 font-bold">Sidebar status</p>
+            <p id="sidebarStatus" class="mt-2 text-sm text-slate-200">Loading puzzle...</p>
+            <p class="mt-3 text-[10px] uppercase tracking-[0.26em] text-slate-400 font-bold">Training tip</p>
+            <p id="coachMessage" class="mt-1 text-sm text-amber-200">Look for the strongest tactical continuation first.</p>
+        </div>
+    </aside>
+
+    <main id="mainContent">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <section class="rounded-[2rem] border border-slate-700 bg-slate-950/90 p-8 shadow-2xl">
+                <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.35em] text-slate-400">Puzzle challenge</p>
+                        <h1 class="mt-4 text-5xl font-bold">Solve the selected position</h1>
+                        <p class="mt-3 text-sm text-slate-400 max-w-2xl">Choose a puzzle from the training library, then execute the best move on the board. Your feedback appears instantly.</p>
+                    </div>
+                    <button class="button-primary" onclick="window.location.href='puzzles.html';">Back to library</button>
+                </div>
+            </section>
+
+            <section class="grid gap-8 xl:grid-cols-[1.5fr_0.9fr] items-start">
+                <div class="space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.35em] text-slate-400">Puzzle</p>
+                            <h2 id="puzzleTitle" class="mt-3 text-4xl font-bold">Loading…</h2>
+                            <p id="puzzleDescription" class="mt-2 text-sm text-slate-400 max-w-2xl">The puzzle will appear once a valid ID is provided.</p>
+                        </div>
+                        <div class="rounded-3xl bg-slate-900/90 px-5 py-4 text-center">
+                            <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Attempts</p>
+                            <p id="attemptCount" class="mt-3 text-3xl font-bold text-white">0 / 3</p>
+                        </div>
+                    </div>
+                    <div class="board" id="board"></div>
+                </div>
+                <div class="rounded-[2rem] border border-slate-700 bg-slate-950/90 p-8 shadow-2xl">
+                    <div class="status-box info mb-6" id="messageBox">
+                        <p id="statusMessage">Make one strong tactical move.</p>
+                    </div>
+                    <div class="rounded-3xl border border-slate-700 bg-slate-900/90 p-5 mb-6">
+                        <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Solution</p>
+                        <p id="solutionText" class="mt-3 text-lg text-slate-200">Hidden until the puzzle is solved or revealed.</p>
+                    </div>
+                    <button class="button-primary w-full mb-3" onclick="revealSolution()">Reveal solution</button>
+                    <button class="button-primary bg-slate-700 hover:bg-slate-600 w-full" onclick="resetPuzzle()">Reset position</button>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+<script>
+const boardEl = document.getElementById('board');
+const statusMessageEl = document.getElementById('statusMessage');
+const messageBox = document.getElementById('messageBox');
+const puzzleTitle = document.getElementById('puzzleTitle');
+const puzzleDescription = document.getElementById('puzzleDescription');
+const attemptCountEl = document.getElementById('attemptCount');
+const solutionText = document.getElementById('solutionText');
+const sidebarStatusEl = document.getElementById('sidebarStatus');
+const coachMessageEl = document.getElementById('coachMessage');
+
+let puzzles = [];
+let activePuzzle = null;
+let selectedSquare = null;
+let validMoves = [];
+let wrongAttempts = 0;
+let solved = false;
+let solutionRevealed = false;
+const game = new Chess();
+let puzzleProgress = {};
+
+const fallbackPuzzles = [
+    {
+      id: 'puzzle-1',
+      title: 'Puzzle 1: Level 1 — Fork tactic',
+      description: 'White to move. Create a fork to win material or mate.',
+      fen: 'r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 1',
+      solution: ['f3e5'],
+      difficulty: 'Level 1'
+    }
+];
+
+function contactHub(){
+    window.location.href = 'https://www.jotform.com/app/261531590934863';
+}
+
+function setSidebarStatus(message){
+    if(sidebarStatusEl) sidebarStatusEl.textContent = message;
+}
+
+function puzzleGamificationEnabled(){
+    return localStorage.getItem('puzzleGamification') !== 'false';
+}
+
+function setMessage(message, type = 'info'){
+    statusMessageEl.textContent = message;
+    messageBox.className = `status-box ${type}`;
+}
+
+function loadPuzzles(){
+    fetch('./puzzles/puzzles.json')
+        .then(resp => resp.ok ? resp.json() : Promise.reject())
+        .then(data => {
+            puzzles = Array.isArray(data.puzzles) ? data.puzzles : fallbackPuzzles;
+            puzzles.sort((a,b) => (a.level||0) - (b.level||0));
+            loadProgress();
+            loadRequestedPuzzle();
+        })
+        .catch(() => {
+            puzzles = fallbackPuzzles;
+            puzzles.sort((a,b) => (a.level||0) - (b.level||0));
+            loadProgress();
+            loadRequestedPuzzle();
+        });
+}
+
+function getPuzzleId(){
+    return new URLSearchParams(window.location.search).get('id');
+}
+
+function loadRequestedPuzzle(){
+    const id = getPuzzleId();
+    activePuzzle = puzzles.find(p => p.id === id);
+    if(!activePuzzle){
+        puzzleTitle.textContent = 'Puzzle not found';
+        puzzleDescription.textContent = 'Please return to the library and choose a valid puzzle.';
+        setMessage('Puzzle not found. Go back to the library and select another puzzle.', 'error');
+        return;
+    }
+    resetPuzzleState();
+    game.load(activePuzzle.fen);
+    renderBoard();
+    updatePuzzleDetails();
+    setMessage('Select the best move for this puzzle.', 'info');
+    setSidebarStatus('Puzzle loaded. Use the board to test the best move.');
+}
+
+function resetPuzzleState(){
+    selectedSquare = null;
+    validMoves = [];
+    wrongAttempts = 0;
+    solved = false;
+    solutionRevealed = false;
+}
+
+function resetPuzzle(){
+    if(!activePuzzle) return;
+    resetPuzzleState();
+    game.load(activePuzzle.fen);
+    renderBoard();
+    updatePuzzleDetails();
+    setMessage('Position reset. Pick the best move again.', 'info');
+}
+
+
+
+function updatePuzzleDetails(){
+    if(!activePuzzle) return;
+    puzzleTitle.textContent = activePuzzle.title;
+    puzzleDescription.textContent = activePuzzle.description;
+    attemptCountEl.textContent = `${wrongAttempts} / 3`;
+    solutionText.textContent = solutionRevealed ? getSolutionText() : 'Hidden until the puzzle is solved or revealed.';
+}
+
+// Progress tracking for individual puzzle page
+function loadProgress(){
+    try{ const raw = localStorage.getItem('puzzleProgress'); puzzleProgress = raw ? JSON.parse(raw) : {}; }catch(e){ puzzleProgress = {}; }
+}
+
+function saveProgress(){
+    try{ localStorage.setItem('puzzleProgress', JSON.stringify(puzzleProgress)); }catch(e){}
+}
+
+function markProgressResult(id, result){
+    if(!id || !puzzleGamificationEnabled()) return;
+    puzzleProgress[id] = result; // 'completed'|'failed'|'unlocked'
+    if(result === 'completed'){
+        // unlock next in puzzles array if available
+        const idx = puzzles.findIndex(p => p.id === id);
+        if(idx >=0 && idx + 1 < puzzles.length){
+            const nextId = puzzles[idx+1].id;
+            if(!puzzleProgress[nextId] || puzzleProgress[nextId] === 'locked') puzzleProgress[nextId] = 'unlocked';
+        }
+    }
+    saveProgress();
+}
+
+function getProgress(id){
+    if(!puzzleGamificationEnabled()) return 'unlocked';
+    return (puzzleProgress && puzzleProgress[id]) || 'locked';
+}
+
+function getSolutionSAN(){
+    if(!activePuzzle) return '';
+    const temp = new Chess(activePuzzle.fen);
+    const sol = activePuzzle.solution[0];
+    const move = temp.move({ from: sol.slice(0, 2), to: sol.slice(2, 4), promotion: 'q' });
+    return move ? move.san : sol;
+}
+
+function getSolutionText(){
+    if(!activePuzzle) return 'No solution available.';
+    return `Solution: ${getSolutionSAN()}`;
+}
+
+function revealSolution(){
+    if(!activePuzzle || solutionRevealed) return;
+    // if revealing without a correct solve, mark failed
+    loadProgress();
+    if(!solved){
+        markProgressResult(activePuzzle.id, 'failed');
+    }
+    solutionRevealed = true;
+    const sol = activePuzzle.solution[0];
+    game.load(activePuzzle.fen);
+    game.move({ from: sol.slice(0, 2), to: sol.slice(2, 4), promotion: 'q' });
+    renderBoard();
+    updatePuzzleDetails();
+    setMessage('Solution revealed. Review the correct move.', 'error');
+}
+
+function clickSquare(square){
+    if(!activePuzzle || solved || solutionRevealed) return;
+    const piece = game.get(square);
+    if(selectedSquare){
+        if(selectedSquare === square){
+            selectedSquare = null;
+            validMoves = [];
+            renderBoard();
+            return;
+        }
+        const move = game.moves({ square: selectedSquare, verbose: true }).find(m => m.to === square);
+        if(!move){
+            selectedSquare = null;
+            validMoves = [];
+            renderBoard();
+            return;
+        }
+        const attempted = move.from + move.to;
+        if(activePuzzle.solution.includes(attempted)){
+            game.move(move);
+            solved = true;
+            solutionRevealed = true;
+            setMessage('Nice work! You found the correct move.', 'success');
+            // mark completed and save progress if gamification is enabled
+            if(puzzleGamificationEnabled()){
+                loadProgress();
+                markProgressResult(activePuzzle.id, 'completed');
+            }
+            updatePuzzleDetails();
+            renderBoard();
+            return;
+        }
+        wrongAttempts += 1;
+        selectedSquare = null;
+        validMoves = [];
+        if(wrongAttempts >= 3){
+            // mark failed then reveal
+            loadProgress();
+            markProgressResult(activePuzzle.id, 'failed');
+            revealSolution();
+        } else {
+            setMessage('Not quite. Try again.', 'warning');
+            updatePuzzleDetails();
+            renderBoard();
+        }
+        return;
+    }
+    if(piece && piece.color === 'w'){
+        selectedSquare = square;
+        validMoves = game.moves({ square, verbose: true }).map(m => m.to);
+        renderBoard();
+    }
+}
+
+function renderBoard(){
+    if(!activePuzzle) return;
+    boardEl.innerHTML = '';
+    const board = game.board();
+    for(let rank = 0; rank < 8; rank++){
+        for(let file = 0; file < 8; file++){
+            const squareName = String.fromCharCode(97 + file) + (8 - rank);
+            const squareColor = (rank + file) % 2 ? 'dark' : 'light';
+            const squareEl = document.createElement('button');
+            squareEl.type = 'button';
+            squareEl.className = `square ${squareColor}`;
+            squareEl.onclick = () => clickSquare(squareName);
+            const piece = board[rank][file];
+            if(piece){
+                const text = { p:'♟', r:'♜', n:'♞', b:'♝', q:'♛', k:'♚' }[piece.type];
+                const span = document.createElement('span');
+                span.textContent = text;
+                span.style.color = piece.color === 'w' ? '#ffffff' : '#000000';
+                span.style.textShadow = piece.color === 'w' ? '0 1px 3px rgba(0,0,0,0.85)' : '0 1px 1px rgba(255,255,255,0.6)';
+                squareEl.appendChild(span);
+            }
+            if(validMoves.includes(squareName)) squareEl.classList.add('valid-move');
+            if(selectedSquare === squareName) squareEl.classList.add('selected');
+            boardEl.appendChild(squareEl);
+        }
+    }
+}
+
+function applyStoredTheme(){
+    const theme = localStorage.getItem('theme') || 'dark';
+    document.body.setAttribute('data-theme', theme);
+}
+
+applyStoredTheme();
+loadPuzzles();
+</script>
+</body>
+</html>

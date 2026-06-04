@@ -1,0 +1,1204 @@
+{
+  "puzzles": [
+    {
+      "id": "puzzle-1",
+      "title": "Puzzle 1: Level 1 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1rbk1b1r/1pq5/p2p3n/2pN2p1/1PP4p/6PN/P2PP2P/R1B1KB1R w KQ - 0 17",
+      "solution": [
+        "d5c7"
+      ],
+      "difficulty": "Level 1",
+      "motif": "Queen capture",
+      "level": 1
+    },
+    {
+      "id": "puzzle-2",
+      "title": "Puzzle 2: Level 2 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "2bk2nr/rpp2pp1/2nq4/p1P4p/Pb2PP1P/8/1P1N2P1/R3KBNR w K - 1 17",
+      "solution": [
+        "c5d6"
+      ],
+      "difficulty": "Level 2",
+      "motif": "Queen capture",
+      "level": 2
+    },
+    {
+      "id": "puzzle-3",
+      "title": "Puzzle 3: Level 3 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb3n1/3kb3/7r/1pp1pPpp/P5P1/Rp3P1q/2PP3P/1NB1KBR1 w - - 0 17",
+      "solution": [
+        "f1h3"
+      ],
+      "difficulty": "Level 3",
+      "motif": "Queen capture",
+      "level": 3
+    },
+    {
+      "id": "puzzle-4",
+      "title": "Puzzle 4: Level 4 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "2r1k1nr/p1pqp1b1/5ppp/8/Q3p2P/P5Pb/1PPP1P2/RNBK2NR w k - 2 15",
+      "solution": [
+        "a4d7"
+      ],
+      "difficulty": "Level 4",
+      "motif": "Queen capture",
+      "level": 4
+    },
+    {
+      "id": "puzzle-5",
+      "title": "Puzzle 5: Level 5 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1nb2knr/1ppp2pp/r7/2P1pp2/p7/N3P3/PP1P1PPq/RBB1K2R w KQ - 2 12",
+      "solution": [
+        "h1h2"
+      ],
+      "difficulty": "Level 5",
+      "motif": "Queen capture",
+      "level": 5
+    },
+    {
+      "id": "puzzle-6",
+      "title": "Puzzle 6: Level 6 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "2bq1k1r/3nbp1p/r2Pp2n/Qp3P2/1P3pPN/2P5/P3P2P/RN2KBR1 w Q - 1 17",
+      "solution": [
+        "a5d8"
+      ],
+      "difficulty": "Level 6",
+      "motif": "Queen capture",
+      "level": 6
+    },
+    {
+      "id": "puzzle-7",
+      "title": "Puzzle 7: Level 7 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r2k3r/p1ppnp1p/p1b1p3/6p1/P4bP1/N1PRPP2/1q1PK2P/2B1Q2R w - - 0 17",
+      "solution": [
+        "c1b2"
+      ],
+      "difficulty": "Level 7",
+      "motif": "Queen capture",
+      "level": 7
+    },
+    {
+      "id": "puzzle-8",
+      "title": "Puzzle 8: Level 8 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn2k1r1/1ppb1p1p/p2p2p1/4p2R/1BPP2n1/1P1q4/Pb2PPB1/RN1K4 w q - 2 17",
+      "solution": [
+        "e2d3"
+      ],
+      "difficulty": "Level 8",
+      "motif": "Queen capture",
+      "level": 8
+    },
+    {
+      "id": "puzzle-9",
+      "title": "Puzzle 9: Level 9 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1rb1k1r1/pppp1ppp/n6n/4P3/8/5BPq/PPPQKP1P/1RB3NR w - - 1 14",
+      "solution": [
+        "g1h3"
+      ],
+      "difficulty": "Level 9",
+      "motif": "Queen capture",
+      "level": 9
+    },
+    {
+      "id": "puzzle-10",
+      "title": "Puzzle 10: Level 10 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn2k2r/pb5p/3b4/PppqppPn/2B2P2/6PN/1PPP1K1R/RNB5 w kq - 0 16",
+      "solution": [
+        "c4d5"
+      ],
+      "difficulty": "Level 10",
+      "motif": "Queen capture",
+      "level": 10
+    },
+    {
+      "id": "puzzle-11",
+      "title": "Puzzle 11: Level 11 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "2bqk3/1ppp1p2/r3pB1r/b3nP1p/3PP1n1/Pp5K/2P3PP/RN3B1R w - - 0 16",
+      "solution": [
+        "f6d8"
+      ],
+      "difficulty": "Level 11",
+      "motif": "Queen capture",
+      "level": 11
+    },
+    {
+      "id": "puzzle-12",
+      "title": "Puzzle 12: Level 12 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb4r/3k1pbp/pp1p2P1/2p1p3/2PPP1Pq/PP3N2/5P2/R1BnKB2 w Q - 0 16",
+      "solution": [
+        "f3h4"
+      ],
+      "difficulty": "Level 12",
+      "motif": "Queen capture",
+      "level": 12
+    },
+    {
+      "id": "puzzle-13",
+      "title": "Puzzle 13: Level 13 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "2r1k2r/pbp1p2p/2qp2pn/5p2/QP6/1P1n1P2/P3PNPP/RN3BKR w - - 1 17",
+      "solution": [
+        "a4c6"
+      ],
+      "difficulty": "Level 13",
+      "motif": "Queen capture",
+      "level": 13
+    },
+    {
+      "id": "puzzle-14",
+      "title": "Puzzle 14: Level 14 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb3nr/p1pp2k1/4pqp1/3N3p/PP3pP1/1R1R4/2PBPP2/3QKBN1 w - - 0 16",
+      "solution": [
+        "d5f6"
+      ],
+      "difficulty": "Level 14",
+      "motif": "Queen capture",
+      "level": 14
+    },
+    {
+      "id": "puzzle-15",
+      "title": "Puzzle 15: Level 15 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1k2r/1pp3Bp/p3p3/3p3n/1PP1P2q/N2P1pPN/P7/1R1QKB1R w Kkq - 0 17",
+      "solution": [
+        "g3h4"
+      ],
+      "difficulty": "Level 15",
+      "motif": "Queen capture",
+      "level": 15
+    },
+    {
+      "id": "puzzle-16",
+      "title": "Puzzle 16: Level 16 \u2014 Mate in one",
+      "description": "White to move. Deliver checkmate in one move.",
+      "fen": "2bqnb2/r1pkpp2/2pp3r/P5p1/P4P1p/1N6/4P1PP/R1BQKBNR w KQ - 1 16",
+      "solution": [
+        "b3c5"
+      ],
+      "difficulty": "Level 16",
+      "motif": "Mate in one",
+      "level": 16
+    },
+    {
+      "id": "puzzle-17",
+      "title": "Puzzle 17: Level 17 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1kbnr/p2ppp1p/n4P2/1p6/1Pp1q3/5p2/RBPPQ1PP/1N2KB1R w Kkq - 0 13",
+      "solution": [
+        "e2e4"
+      ],
+      "difficulty": "Level 17",
+      "motif": "Queen capture",
+      "level": 17
+    },
+    {
+      "id": "puzzle-18",
+      "title": "Puzzle 18: Level 18 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb2b1r/2pknpp1/p3N2p/1p1q4/P5PP/3Q4/1PPP1P2/RNBK1B1R w - - 3 13",
+      "solution": [
+        "d3d5"
+      ],
+      "difficulty": "Level 18",
+      "motif": "Queen capture",
+      "level": 18
+    },
+    {
+      "id": "puzzle-19",
+      "title": "Puzzle 19: Level 19 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1rb2bn1/p3kpp1/n1p5/3pp2r/1Pp5/N2qP2P/PB1PBPP1/2R2KNR w - - 6 17",
+      "solution": [
+        "e2d3"
+      ],
+      "difficulty": "Level 19",
+      "motif": "Queen capture",
+      "level": 19
+    },
+    {
+      "id": "puzzle-20",
+      "title": "Puzzle 20: Level 20 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1kb2/p2ppp2/4r3/qp2n2p/2P2p2/3p2R1/PPNQPP1P/R1B1KB2 w Qq - 0 15",
+      "solution": [
+        "d2a5"
+      ],
+      "difficulty": "Level 20",
+      "motif": "Queen capture",
+      "level": 20
+    },
+    {
+      "id": "puzzle-21",
+      "title": "Puzzle 21: Level 21 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1n2kbnr/1b2ppp1/r7/pp1p3p/P1B4Q/3K3P/1qPP1PPR/RNB3N1 w k - 0 16",
+      "solution": [
+        "c1b2"
+      ],
+      "difficulty": "Level 21",
+      "motif": "Queen capture",
+      "level": 21
+    },
+    {
+      "id": "puzzle-22",
+      "title": "Puzzle 22: Level 22 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1kb1r/ppp2p1p/1n1p2p1/4p3/4P3/1PNP2qB/P2P1P1R/R1BQ1KN1 w kq - 6 15",
+      "solution": [
+        "f2g3"
+      ],
+      "difficulty": "Level 22",
+      "motif": "Queen capture",
+      "level": 22
+    },
+    {
+      "id": "puzzle-23",
+      "title": "Puzzle 23: Level 23 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn2kbnr/5p2/p1p1b3/1p1pp3/3PP1pQ/5qB1/PPP2PBP/RN3K1R w kq - 0 13",
+      "solution": [
+        "g2f3"
+      ],
+      "difficulty": "Level 23",
+      "motif": "Queen capture",
+      "level": 23
+    },
+    {
+      "id": "puzzle-24",
+      "title": "Puzzle 24: Level 24 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnbq1bnr/1p1pp3/p4k2/QpP2PNp/3P4/3B2P1/PP3P1P/1RB1K2R w K - 1 17",
+      "solution": [
+        "a5d8"
+      ],
+      "difficulty": "Level 24",
+      "motif": "Queen capture",
+      "level": 24
+    },
+    {
+      "id": "puzzle-25",
+      "title": "Puzzle 25: Level 25 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b2knr/pppp3p/5p2/4n3/2Nq1PpP/b1QP4/RPP1P1P1/2B1KB1R w - - 2 14",
+      "solution": [
+        "c3d4"
+      ],
+      "difficulty": "Level 25",
+      "motif": "Queen capture",
+      "level": 25
+    },
+    {
+      "id": "puzzle-26",
+      "title": "Puzzle 26: Level 26 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnk2bnr/p2pp3/b4p1p/1qp2PN1/2P1P3/PP3R2/R2PQ1PP/1NB1K3 w - - 1 16",
+      "solution": [
+        "c4b5"
+      ],
+      "difficulty": "Level 26",
+      "motif": "Queen capture",
+      "level": 26
+    },
+    {
+      "id": "puzzle-27",
+      "title": "Puzzle 27: Level 27 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1rb3nr/pp1pqkbp/2n3p1/2p1p3/2P1P2B/3P1P2/P3K1PP/RN3BNR w - - 0 13",
+      "solution": [
+        "h4e7"
+      ],
+      "difficulty": "Level 27",
+      "motif": "Queen capture",
+      "level": 27
+    },
+    {
+      "id": "puzzle-28",
+      "title": "Puzzle 28: Level 28 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn1k1b1r/p1p1pppp/1p2P2n/3p4/3P3P/1PN1P1P1/2P1N3/1qBQKB1R w K - 2 12",
+      "solution": [
+        "c3b1"
+      ],
+      "difficulty": "Level 28",
+      "motif": "Queen capture",
+      "level": 28
+    },
+    {
+      "id": "puzzle-29",
+      "title": "Puzzle 29: Level 29 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1kb2/pp1pp2r/n1p5/3P1ppp/5n2/BqP2P1N/3KP2P/RN1Q1B1R w q - 0 15",
+      "solution": [
+        "d1b3"
+      ],
+      "difficulty": "Level 29",
+      "motif": "Queen capture",
+      "level": 29
+    },
+    {
+      "id": "puzzle-30",
+      "title": "Puzzle 30: Level 30 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1bqkbr1/p1p1pN2/n7/1p1pP1p1/1P1BB1p1/6P1/P1PP1P1P/Rn2K2R w KQq - 0 15",
+      "solution": [
+        "f7d8"
+      ],
+      "difficulty": "Level 30",
+      "motif": "Queen capture",
+      "level": 30
+    },
+    {
+      "id": "puzzle-31",
+      "title": "Puzzle 31: Level 31 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b3n1/pppk1pp1/2nbp3/7r/P3PP2/3p4/1PPP2N1/RNBQKBRq w Q - 1 14",
+      "solution": [
+        "g1h1"
+      ],
+      "difficulty": "Level 31",
+      "motif": "Queen capture",
+      "level": 31
+    },
+    {
+      "id": "puzzle-32",
+      "title": "Puzzle 32: Level 32 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn3bnr/1p1bk3/2p2ppp/3Pp3/pPP3P1/P3qN1P/R3PP2/1N1QKR2 w - - 0 16",
+      "solution": [
+        "f2e3"
+      ],
+      "difficulty": "Level 32",
+      "motif": "Queen capture",
+      "level": 32
+    },
+    {
+      "id": "puzzle-33",
+      "title": "Puzzle 33: Level 33 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb4r/p1pk2pp/p2b1p1q/3Qp3/PP4P1/2P1P1P1/2NPNP2/R1B1K2R w KQ - 1 15",
+      "solution": [
+        "h1h6"
+      ],
+      "difficulty": "Level 33",
+      "motif": "Queen capture",
+      "level": 33
+    },
+    {
+      "id": "puzzle-34",
+      "title": "Puzzle 34: Level 34 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1r1nkbnr/ppp1pppp/7B/2qp4/N7/1QPP1P1b/PP2P3/1R2KBR1 w k - 1 13",
+      "solution": [
+        "a4c5"
+      ],
+      "difficulty": "Level 34",
+      "motif": "Queen capture",
+      "level": 34
+    },
+    {
+      "id": "puzzle-35",
+      "title": "Puzzle 35: Level 35 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r3kbr1/p1pbnppp/np3B2/1P1p4/5q2/4R1P1/P1PPP3/RN1QKBN1 w Qq - 0 13",
+      "solution": [
+        "g3f4"
+      ],
+      "difficulty": "Level 35",
+      "motif": "Queen capture",
+      "level": 35
+    },
+    {
+      "id": "puzzle-36",
+      "title": "Puzzle 36: Level 36 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1kbnr/pp1p2pp/2p4q/5p2/3Pp3/NPK5/P1P1P1P1/R2Q1BNR w kq - 2 10",
+      "solution": [
+        "h1h6"
+      ],
+      "difficulty": "Level 36",
+      "motif": "Queen capture",
+      "level": 36
+    },
+    {
+      "id": "puzzle-37",
+      "title": "Puzzle 37: Level 37 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "2r1k1nr/ppp1pp1p/n6b/1P6/2b1PPp1/Q2q2PB/P2P3P/RNB1K2R w KQk - 3 17",
+      "solution": [
+        "a3d3"
+      ],
+      "difficulty": "Level 37",
+      "motif": "Queen capture",
+      "level": 37
+    },
+    {
+      "id": "puzzle-38",
+      "title": "Puzzle 38: Level 38 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn1k1bn1/p1p1q1Qr/b7/1p4Pp/4p3/P1P1P2N/1P1P2PP/RNB1KB1R w KQ - 3 15",
+      "solution": [
+        "g7e7"
+      ],
+      "difficulty": "Level 38",
+      "motif": "Queen capture",
+      "level": 38
+    },
+    {
+      "id": "puzzle-39",
+      "title": "Puzzle 39: Level 39 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "2k2b1r/ppprp2p/B1np4/5Np1/PP4n1/1q2P1R1/2PP1PP1/RNBQK3 w Q - 3 14",
+      "solution": [
+        "c2b3"
+      ],
+      "difficulty": "Level 39",
+      "motif": "Queen capture",
+      "level": 39
+    },
+    {
+      "id": "puzzle-40",
+      "title": "Puzzle 40: Level 40 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1rb1k2r/p1ppnp2/4p2p/n7/1p2PPPq/2P2NRP/1P1P4/1NBQKB1R w Kk - 0 16",
+      "solution": [
+        "f3h4"
+      ],
+      "difficulty": "Level 40",
+      "motif": "Queen capture",
+      "level": 40
+    },
+    {
+      "id": "puzzle-41",
+      "title": "Puzzle 41: Level 41 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b3nr/1p2k1b1/2np1p1p/q3p1p1/1Bp1P1P1/3P4/P1PK1P1P/R2Q1BNR w - - 0 17",
+      "solution": [
+        "b4a5"
+      ],
+      "difficulty": "Level 41",
+      "motif": "Queen capture",
+      "level": 41
+    },
+    {
+      "id": "puzzle-42",
+      "title": "Puzzle 42: Level 42 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1kb1r/pp1Nn3/6pp/2pp1p2/1nPP4/q7/PPQ1PPPP/1R2KB1R w Kkq - 0 13",
+      "solution": [
+        "b2a3"
+      ],
+      "difficulty": "Level 42",
+      "motif": "Queen capture",
+      "level": 42
+    },
+    {
+      "id": "puzzle-43",
+      "title": "Puzzle 43: Level 43 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb2rk1/1ppp1p1p/pb4p1/1N2pnq1/PP6/3B4/2P1QPPP/R1B2R1K w - - 0 16",
+      "solution": [
+        "c1g5"
+      ],
+      "difficulty": "Level 43",
+      "motif": "Queen capture",
+      "level": 43
+    },
+    {
+      "id": "puzzle-44",
+      "title": "Puzzle 44: Level 44 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1k1nr/1p1pb1p1/7p/2p5/1pP1p1p1/P3PPqP/3PK3/RNBQ1BR1 w kq - 0 14",
+      "solution": [
+        "g1g3"
+      ],
+      "difficulty": "Level 44",
+      "motif": "Queen capture",
+      "level": 44
+    },
+    {
+      "id": "puzzle-45",
+      "title": "Puzzle 45: Level 45 \u2014 Mate in one",
+      "description": "White to move. Deliver checkmate in one move.",
+      "fen": "3qkbnr/rnpbp2p/p7/3p1pP1/2PP3P/N3PQ2/PP3KPR/R1B3N1 w - - 1 17",
+      "solution": [
+        "f3h5"
+      ],
+      "difficulty": "Level 45",
+      "motif": "Mate in one",
+      "level": 45
+    },
+    {
+      "id": "puzzle-46",
+      "title": "Puzzle 46: Level 46 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn3bnr/p6p/1q1kp1p1/P1p2P2/1PppbP1P/2N5/1Q1PP1B1/R1B1K1NR w KQ - 1 15",
+      "solution": [
+        "a5b6"
+      ],
+      "difficulty": "Level 46",
+      "motif": "Queen capture",
+      "level": 46
+    },
+    {
+      "id": "puzzle-47",
+      "title": "Puzzle 47: Level 47 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b2knr/p2ppPbp/2n5/1pp3N1/q7/PP5P/2PPP1P1/RNBQKB1R w KQ - 0 10",
+      "solution": [
+        "b3a4"
+      ],
+      "difficulty": "Level 47",
+      "motif": "Queen capture",
+      "level": 47
+    },
+    {
+      "id": "puzzle-48",
+      "title": "Puzzle 48: Level 48 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn2kbnr/ppp2ppp/3pp3/6q1/2P5/1P3NPB/P2P1P1P/RbBQK2R w KQkq - 2 7",
+      "solution": [
+        "f3g5"
+      ],
+      "difficulty": "Level 48",
+      "motif": "Queen capture",
+      "level": 48
+    },
+    {
+      "id": "puzzle-49",
+      "title": "Puzzle 49: Level 49 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b2b1r/p2k3p/1pN3pn/2p1pp2/2PnP2q/PQ1B1PPP/1P6/R1BK2NR w - - 0 15",
+      "solution": [
+        "g3h4"
+      ],
+      "difficulty": "Level 49",
+      "motif": "Queen capture",
+      "level": 49
+    },
+    {
+      "id": "puzzle-50",
+      "title": "Puzzle 50: Level 50 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1kbnr/p1p1q3/2np1B2/1p2P3/1PP3pp/P4P2/4P1PP/RNQ1KBNR w KQkq - 0 13",
+      "solution": [
+        "f6e7"
+      ],
+      "difficulty": "Level 50",
+      "motif": "Queen capture",
+      "level": 50
+    },
+    {
+      "id": "puzzle-51",
+      "title": "Puzzle 51: Level 51 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnbk1bnr/p3p2p/3N1p2/2p1q3/2p2Pp1/3PP2N/PPQ1B1PP/R1B1K2R w KQ - 1 13",
+      "solution": [
+        "f4e5"
+      ],
+      "difficulty": "Level 51",
+      "motif": "Queen capture",
+      "level": 51
+    },
+    {
+      "id": "puzzle-52",
+      "title": "Puzzle 52: Level 52 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "2bqk1nr/rpp2p1p/2npN3/2b3P1/p3P2R/P4pP1/RPPP4/1NBQKB2 w k - 0 12",
+      "solution": [
+        "e6d8"
+      ],
+      "difficulty": "Level 52",
+      "motif": "Queen capture",
+      "level": 52
+    },
+    {
+      "id": "puzzle-53",
+      "title": "Puzzle 53: Level 53 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1r3knr/pbpp3p/np2qp2/5PP1/PP2p1P1/4P3/1BPP3b/RN1QKBN1 w Q - 0 14",
+      "solution": [
+        "f5e6"
+      ],
+      "difficulty": "Level 53",
+      "motif": "Queen capture",
+      "level": 53
+    },
+    {
+      "id": "puzzle-54",
+      "title": "Puzzle 54: Level 54 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "2b2knr/rp1n1p2/BQ2pq2/P2pP2p/2p2Pp1/b1N2R1N/1PPP2PP/2B1K3 w - - 0 17",
+      "solution": [
+        "e5f6"
+      ],
+      "difficulty": "Level 54",
+      "motif": "Queen capture",
+      "level": 54
+    },
+    {
+      "id": "puzzle-55",
+      "title": "Puzzle 55: Level 55 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1k1nr/1p3ppp/8/p1P1p2P/2p4q/b7/PPQBPPP1/RN2KBNR w KQkq - 0 10",
+      "solution": [
+        "h1h4"
+      ],
+      "difficulty": "Level 55",
+      "motif": "Queen capture",
+      "level": 55
+    },
+    {
+      "id": "puzzle-56",
+      "title": "Puzzle 56: Level 56 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb2bnr/1p1kp3/p3q3/2pP1pPp/P7/5PNN/RP1PP1P1/2BQKBR1 w - - 1 14",
+      "solution": [
+        "d5e6"
+      ],
+      "difficulty": "Level 56",
+      "motif": "Queen capture",
+      "level": 56
+    },
+    {
+      "id": "puzzle-57",
+      "title": "Puzzle 57: Level 57 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnbqk1nr/3p1pp1/ppNbp3/7p/3P1P2/1P6/2P1P1PP/RNBQKB1R w KQkq - 0 8",
+      "solution": [
+        "c6d8"
+      ],
+      "difficulty": "Level 57",
+      "motif": "Queen capture",
+      "level": 57
+    },
+    {
+      "id": "puzzle-58",
+      "title": "Puzzle 58: Level 58 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1kbn1/ppp4r/2nqp1pp/5P2/2BPpB2/1PP5/P4P1P/RN1QK1NR w KQq - 1 10",
+      "solution": [
+        "f4d6"
+      ],
+      "difficulty": "Level 58",
+      "motif": "Queen capture",
+      "level": 58
+    },
+    {
+      "id": "puzzle-59",
+      "title": "Puzzle 59: Level 59 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b3nr/1ppp2k1/n5p1/p3ppqp/3bP3/1PPP4/P5KP/RNBQ1RNB w - - 0 16",
+      "solution": [
+        "c1g5"
+      ],
+      "difficulty": "Level 59",
+      "motif": "Queen capture",
+      "level": 59
+    },
+    {
+      "id": "puzzle-60",
+      "title": "Puzzle 60: Level 60 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1rb1kbr1/p1p5/1p1ppqpp/n3B3/1P4B1/N2P2P1/P1P1PP1P/2RQK1NR w K - 2 14",
+      "solution": [
+        "e5f6"
+      ],
+      "difficulty": "Level 60",
+      "motif": "Queen capture",
+      "level": 60
+    },
+    {
+      "id": "puzzle-61",
+      "title": "Puzzle 61: Level 61 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1n2k1nr/r1qp1ppp/b3p3/ppp1Q3/3NP3/NP2b3/P1PPBPP1/R1B1K3 w Qk - 4 15",
+      "solution": [
+        "e5c7"
+      ],
+      "difficulty": "Level 61",
+      "motif": "Queen capture",
+      "level": 61
+    },
+    {
+      "id": "puzzle-62",
+      "title": "Puzzle 62: Level 62 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1rb1k2r/pppp4/2nb1p1p/P3p1pq/P1N3P1/2P2P1P/3PPK2/1RBQ1B1R w - - 1 17",
+      "solution": [
+        "g4h5"
+      ],
+      "difficulty": "Level 62",
+      "motif": "Queen capture",
+      "level": 62
+    },
+    {
+      "id": "puzzle-63",
+      "title": "Puzzle 63: Level 63 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1k1n1/ppp1b2r/q3p2p/1P1p1p2/3PP1P1/6KB/P1P2P1P/RN1Q2NR w - - 3 14",
+      "solution": [
+        "b5a6"
+      ],
+      "difficulty": "Level 63",
+      "motif": "Queen capture",
+      "level": 63
+    },
+    {
+      "id": "puzzle-64",
+      "title": "Puzzle 64: Level 64 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn2k2r/pbp2p1p/1p3qpn/3Np3/6P1/P2P1PBB/1PP1P2P/R1Q1K1NR w KQkq - 1 12",
+      "solution": [
+        "d5f6"
+      ],
+      "difficulty": "Level 64",
+      "motif": "Queen capture",
+      "level": 64
+    },
+    {
+      "id": "puzzle-65",
+      "title": "Puzzle 65: Level 65 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1bk1bnr/pp2ppp1/2Bp3p/2P2q2/3P2P1/2B1P2P/P1P2P2/RN1QK1NR w KQ - 1 12",
+      "solution": [
+        "g4f5"
+      ],
+      "difficulty": "Level 65",
+      "motif": "Queen capture",
+      "level": 65
+    },
+    {
+      "id": "puzzle-66",
+      "title": "Puzzle 66: Level 66 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn2k1nr/p1p4p/b3p3/2bp1qp1/1p1P3P/BPNBP3/P1P2P2/RN1QK1R1 w Qkq - 0 16",
+      "solution": [
+        "d3f5"
+      ],
+      "difficulty": "Level 66",
+      "motif": "Queen capture",
+      "level": 66
+    },
+    {
+      "id": "puzzle-67",
+      "title": "Puzzle 67: Level 67 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r3kbnr/ppp2ppp/2npb3/4p3/1P1PP1P1/8/P1PQ1P1q/RN2KBNR w KQkq - 1 10",
+      "solution": [
+        "h1h2"
+      ],
+      "difficulty": "Level 67",
+      "motif": "Queen capture",
+      "level": 67
+    },
+    {
+      "id": "puzzle-68",
+      "title": "Puzzle 68: Level 68 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn3bnr/p1p3p1/2b1pk1p/3pN3/1BpPP3/P4P1q/1P2B1PP/RN1QK2R w KQ - 0 14",
+      "solution": [
+        "g2h3"
+      ],
+      "difficulty": "Level 68",
+      "motif": "Queen capture",
+      "level": 68
+    },
+    {
+      "id": "puzzle-69",
+      "title": "Puzzle 69: Level 69 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1k1nr/pp4B1/3ppq1p/2p2p2/1Q6/b3PN2/P1PP1PPP/R2NKB1R w KQkq - 0 13",
+      "solution": [
+        "g7f6"
+      ],
+      "difficulty": "Level 69",
+      "motif": "Queen capture",
+      "level": 69
+    },
+    {
+      "id": "puzzle-70",
+      "title": "Puzzle 70: Level 70 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnbk1br1/1p1pn1p1/p3p2p/2p5/1q5P/1KP1P1P1/PP1PBP1R/RNB3N1 w - - 7 15",
+      "solution": [
+        "c3b4"
+      ],
+      "difficulty": "Level 70",
+      "motif": "Queen capture",
+      "level": 70
+    },
+    {
+      "id": "puzzle-71",
+      "title": "Puzzle 71: Level 71 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1kb1r/3q1ppp/ppn4n/2P1p3/1P5P/P1PQp3/5PP1/RNB1KBNR w KQkq - 2 12",
+      "solution": [
+        "d3d7"
+      ],
+      "difficulty": "Level 71",
+      "motif": "Queen capture",
+      "level": 71
+    },
+    {
+      "id": "puzzle-72",
+      "title": "Puzzle 72: Level 72 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1kb1Q/p1p2p2/3p1qp1/1p2p3/6n1/P1P5/RP1PPPPP/1NB1KBNR w Kq - 1 8",
+      "solution": [
+        "h8f6"
+      ],
+      "difficulty": "Level 72",
+      "motif": "Queen capture",
+      "level": 72
+    },
+    {
+      "id": "puzzle-73",
+      "title": "Puzzle 73: Level 73 \u2014 Mate in one",
+      "description": "White to move. Deliver checkmate in one move.",
+      "fen": "r2qkbnr/3np1p1/1pp5/pP1p3p/P1PB4/3Q3N/3PPPPP/RN2KB1R w KQkq - 0 12",
+      "solution": [
+        "d3g6"
+      ],
+      "difficulty": "Level 73",
+      "motif": "Mate in one",
+      "level": 73
+    },
+    {
+      "id": "puzzle-74",
+      "title": "Puzzle 74: Level 74 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1bk3r/1p1pppbp/6pn/p2q4/PnpP1PP1/7P/R1PQP1BR/1NBK2N1 w - - 1 13",
+      "solution": [
+        "g2d5"
+      ],
+      "difficulty": "Level 74",
+      "motif": "Queen capture",
+      "level": 74
+    },
+    {
+      "id": "puzzle-75",
+      "title": "Puzzle 75: Level 75 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1kb1r/pppp1ppp/4p2n/8/1P6/2NPq3/P1PKP1PP/1RBQ1BNR w kq - 2 6",
+      "solution": [
+        "d2e3"
+      ],
+      "difficulty": "Level 75",
+      "motif": "Queen capture",
+      "level": 75
+    },
+    {
+      "id": "puzzle-76",
+      "title": "Puzzle 76: Level 76 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "bn3bnr/r1p1k3/1p1pppp1/pQ1B3p/1PPPq3/2B5/P3NPPP/RN2K2R w - - 1 17",
+      "solution": [
+        "d5e4"
+      ],
+      "difficulty": "Level 76",
+      "motif": "Queen capture",
+      "level": 76
+    },
+    {
+      "id": "puzzle-77",
+      "title": "Puzzle 77: Level 77 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1bqkb1r/2pp1ppp/p3p2n/1p4B1/3P2n1/7P/PPP1PP2/RN1QKBNR w KQkq - 0 8",
+      "solution": [
+        "g5d8"
+      ],
+      "difficulty": "Level 77",
+      "motif": "Queen capture",
+      "level": 77
+    },
+    {
+      "id": "puzzle-78",
+      "title": "Puzzle 78: Level 78 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn1q1b1r/1Nppkp2/1p2p1p1/p6p/5Pn1/1P4K1/P1PPP1PP/1RBQ1BNR w - - 1 11",
+      "solution": [
+        "b7d8"
+      ],
+      "difficulty": "Level 78",
+      "motif": "Queen capture",
+      "level": 78
+    },
+    {
+      "id": "puzzle-79",
+      "title": "Puzzle 79: Level 79 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r5nr/2p1pkbp/1q1pbp2/Pp2n1p1/3P2P1/P3PQNP/2P2P2/R1B1KBNR w KQ - 1 13",
+      "solution": [
+        "a5b6"
+      ],
+      "difficulty": "Level 79",
+      "motif": "Queen capture",
+      "level": 79
+    },
+    {
+      "id": "puzzle-80",
+      "title": "Puzzle 80: Level 80 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1kbnr/pp1ppppp/8/2p5/1P1n1PPP/3P3B/q1PQP3/RNB1K1NR w KQkq - 0 8",
+      "solution": [
+        "a1a2"
+      ],
+      "difficulty": "Level 80",
+      "motif": "Queen capture",
+      "level": 80
+    },
+    {
+      "id": "puzzle-81",
+      "title": "Puzzle 81: Level 81 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1kbnr/pppp1pp1/8/6qp/3p4/2P4P/PP2PPPR/RNBQKBN1 w Qkq - 0 5",
+      "solution": [
+        "c1g5"
+      ],
+      "difficulty": "Level 81",
+      "motif": "Queen capture",
+      "level": 81
+    },
+    {
+      "id": "puzzle-82",
+      "title": "Puzzle 82: Level 82 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb2b2/p1Npqkpr/1p6/1P2pp1p/3P2nP/B7/P1P1PPP1/R2QKBNR w KQ - 1 10",
+      "solution": [
+        "a3e7"
+      ],
+      "difficulty": "Level 82",
+      "motif": "Queen capture",
+      "level": 82
+    },
+    {
+      "id": "puzzle-83",
+      "title": "Puzzle 83: Level 83 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1kb1r/1p1p2pp/p1p4n/P3pp2/5P1P/1qN5/2PPP1P1/R1BQKBNR w kq - 0 9",
+      "solution": [
+        "c2b3"
+      ],
+      "difficulty": "Level 83",
+      "motif": "Queen capture",
+      "level": 83
+    },
+    {
+      "id": "puzzle-84",
+      "title": "Puzzle 84: Level 84 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1k1nr/p1ppq1p1/4p2p/4Np2/1p1P3B/P5P1/P1P1PP1P/RN1QKB1R w KQkq - 2 8",
+      "solution": [
+        "h4e7"
+      ],
+      "difficulty": "Level 84",
+      "motif": "Queen capture",
+      "level": 84
+    },
+    {
+      "id": "puzzle-85",
+      "title": "Puzzle 85: Level 85 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn2k1nr/pb1p2p1/1bp2p1p/Np2B3/1q1P2P1/1PP1P3/P1QKNp1P/1R3B1R w kq - 3 17",
+      "solution": [
+        "c3b4"
+      ],
+      "difficulty": "Level 85",
+      "motif": "Queen capture",
+      "level": 85
+    },
+    {
+      "id": "puzzle-86",
+      "title": "Puzzle 86: Level 86 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r3kbnr/pppqp1p1/2Bp1p1p/n7/6b1/N2P3P/PPP1PP2/R1BQK1NR w k - 2 10",
+      "solution": [
+        "c6d7"
+      ],
+      "difficulty": "Level 86",
+      "motif": "Queen capture",
+      "level": 86
+    },
+    {
+      "id": "puzzle-87",
+      "title": "Puzzle 87: Level 87 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1n1k1bnr/1bpp1p2/rp2pP2/p5pp/1q1P4/N1P1B1P1/P3PK1P/2RQ1BNR w - - 3 14",
+      "solution": [
+        "c3b4"
+      ],
+      "difficulty": "Level 87",
+      "motif": "Queen capture",
+      "level": 87
+    },
+    {
+      "id": "puzzle-88",
+      "title": "Puzzle 88: Level 88 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1bn1bnr/1p1kp3/3q3p/p1pPPpp1/1P4Q1/3P3P/P3BPPR/RNB1K1N1 w - - 1 16",
+      "solution": [
+        "e5d6"
+      ],
+      "difficulty": "Level 88",
+      "motif": "Queen capture",
+      "level": 88
+    },
+    {
+      "id": "puzzle-89",
+      "title": "Puzzle 89: Level 89 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1nb1kr2/r1p1q1p1/3p1pNn/p1b1p2p/3PPB2/p4PPP/1PPN4/R2QKB1R w KQ - 0 17",
+      "solution": [
+        "g6e7"
+      ],
+      "difficulty": "Level 89",
+      "motif": "Queen capture",
+      "level": 89
+    },
+    {
+      "id": "puzzle-90",
+      "title": "Puzzle 90: Level 90 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn2qb1r/p1ppp2p/Bp3pQn/4k1N1/4b3/2PPP1P1/PPN2P1P/1RB1K2R w K - 3 13",
+      "solution": [
+        "g6e8"
+      ],
+      "difficulty": "Level 90",
+      "motif": "Queen capture",
+      "level": 90
+    },
+    {
+      "id": "puzzle-91",
+      "title": "Puzzle 91: Level 91 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb2b1r/2p1qk1p/pp3pp1/P2ppN2/1P4nP/5P2/R1PPP3/2BQKBNR w K - 0 13",
+      "solution": [
+        "f5e7"
+      ],
+      "difficulty": "Level 91",
+      "motif": "Queen capture",
+      "level": 91
+    },
+    {
+      "id": "puzzle-92",
+      "title": "Puzzle 92: Level 92 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1k1nr/pppp1ppp/n7/2b1P1q1/8/1P5P/P1P1PPP1/RNBQKBNR w KQkq - 1 5",
+      "solution": [
+        "c1g5"
+      ],
+      "difficulty": "Level 92",
+      "motif": "Queen capture",
+      "level": 92
+    },
+    {
+      "id": "puzzle-93",
+      "title": "Puzzle 93: Level 93 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnb1k2r/p2pnpbp/2p3q1/P1P1p1p1/p3P2N/1PNB4/3P1PPP/R1B1K2R w KQkq - 2 14",
+      "solution": [
+        "h4g6"
+      ],
+      "difficulty": "Level 93",
+      "motif": "Queen capture",
+      "level": 93
+    },
+    {
+      "id": "puzzle-94",
+      "title": "Puzzle 94: Level 94 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rnbq2n1/1pp1kN2/p2p1ppr/1Q2p3/PP2P2p/B3b3/2P2PPP/RN2KB1R w KQ - 2 17",
+      "solution": [
+        "f7d8"
+      ],
+      "difficulty": "Level 94",
+      "motif": "Queen capture",
+      "level": 94
+    },
+    {
+      "id": "puzzle-95",
+      "title": "Puzzle 95: Level 95 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b2bkr/p1qpp3/2n3p1/1pPnBp1p/P4R1P/5NP1/RPP1PP2/1N1QKB2 w - - 0 16",
+      "solution": [
+        "e5c7"
+      ],
+      "difficulty": "Level 95",
+      "motif": "Queen capture",
+      "level": 95
+    },
+    {
+      "id": "puzzle-96",
+      "title": "Puzzle 96: Level 96 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1k2r/p5p1/n1p1p3/qP1p3p/1b2PpnP/5PPB/RPPPK3/1NB1Q1NR w kq - 4 15",
+      "solution": [
+        "a2a5"
+      ],
+      "difficulty": "Level 96",
+      "motif": "Queen capture",
+      "level": 96
+    },
+    {
+      "id": "puzzle-97",
+      "title": "Puzzle 97: Level 97 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1k1nr/ppp1b1p1/4p2p/3pn3/2N2p1q/3PB3/PPP1PPP1/RQ1KNB1R w kq - 0 12",
+      "solution": [
+        "h1h4"
+      ],
+      "difficulty": "Level 97",
+      "motif": "Queen capture",
+      "level": 97
+    },
+    {
+      "id": "puzzle-98",
+      "title": "Puzzle 98: Level 98 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "rn2kbnr/pbpp1pp1/8/1p2p2p/6Pq/NP5R/P1PPPP2/R1BQKBN1 w Qkq - 1 6",
+      "solution": [
+        "h3h4"
+      ],
+      "difficulty": "Level 98",
+      "motif": "Queen capture",
+      "level": 98
+    },
+    {
+      "id": "puzzle-99",
+      "title": "Puzzle 99: Level 99 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "r1b1k1r1/pppp1ppp/2nQ1q2/1B2p3/2N3n1/4b2N/PPPP1PPP/R1B1K2R w KQq - 2 9",
+      "solution": [
+        "d6f6"
+      ],
+      "difficulty": "Level 99",
+      "motif": "Queen capture",
+      "level": 99
+    },
+    {
+      "id": "puzzle-100",
+      "title": "Puzzle 100: Level 100 \u2014 Queen capture",
+      "description": "White to move. Win material with a queen capture.",
+      "fen": "1n2k1nr/rpp2ppp/3b2b1/1N2p1P1/p3q3/1PPQP3/PB1P1P1P/3RKBNR w Kk - 0 14",
+      "solution": [
+        "d3e4"
+      ],
+      "difficulty": "Level 100",
+      "motif": "Queen capture",
+      "level": 100
+    }
+  ]
+}

@@ -218,7 +218,7 @@ body[data-theme="classic"] .border-gray-700 {
                 <img src="resources/stats.png" alt="" class="h-5 w-5 object-contain">
                 <span>Stats</span>
             </button>
-            <button id="navPuzzles" class="nav-item" onclick="setActiveSidebarNav('navPuzzles'); showComingSoon('Puzzles');">
+            <button id="navPuzzles" class="nav-item" onclick="window.location.href='puzzles.html';">
                 <img src="resources/puzzles.png" alt="" class="h-5 w-5 object-contain">
                 <span>Puzzles</span>
             </button>
@@ -286,6 +286,14 @@ body[data-theme="classic"] .border-gray-700 {
                     <span>Classic</span>
                 </label>
             </div>
+        </div>
+        <div>
+            <p class="mb-3 font-bold text-white">Puzzle gamification</p>
+            <label class="flex items-center gap-3">
+                <input id="puzzleGamificationToggle" type="checkbox" onchange="setPuzzleGamification(this.checked)">
+                <span>Enable puzzle progression locks</span>
+            </label>
+            <p class="mt-2 text-xs text-gray-400">When disabled, all puzzles remain unlocked and failed puzzles do not block progress.</p>
         </div>
     </div>
     <button onclick="showHomeView()" class="mt-6 bg-gray-700 hover:bg-gray-600 transition px-6 py-3 rounded font-bold w-full">Back to Menu</button>
@@ -892,6 +900,17 @@ function loadTheme(){
     setTheme(stored);
 }
 
+function setPuzzleGamification(enabled){
+    localStorage.setItem('puzzleGamification', enabled ? 'true' : 'false');
+}
+
+function loadPuzzleGamificationSetting(){
+    const stored = localStorage.getItem('puzzleGamification');
+    const enabled = stored !== 'false';
+    const toggle = document.getElementById('puzzleGamificationToggle');
+    if(toggle) toggle.checked = enabled;
+}
+
 function getDifficultyText(value){
     const percent = Number(value);
     if(percent >= 80) return '80% gives the bot strong depth with serious tactical awareness.';
@@ -1027,6 +1046,7 @@ function endGame(){
 }
 
 loadTheme();
+loadPuzzleGamificationSetting();
 updateDifficultyInfo(diffInputEl.value);
 updateSidebarState();
 </script>
